@@ -107,8 +107,9 @@ export function Pricing() {
                     <span className="text-white text-4xl font-bold">${price}</span>
                     <span className="text-white/40 text-sm ml-2">/ {t.month}</span>
                   </div>
-                  <button
-                    className="w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl text-sm transition-all duration-200 mb-6"
+                  <a
+                    href="https://app.corecapitalpy.com"
+                    className="block w-full text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl text-sm transition-all duration-200 mb-6"
                     style={
                       tier.popular
                         ? {
@@ -120,7 +121,7 @@ export function Pricing() {
                     }
                   >
                     {t.cta}
-                  </button>
+                  </a>
                   <ul className="space-y-3">
                     {tierData.features.map((feature: string, idx: number) => (
                       <li key={idx} className="flex items-start gap-2.5">

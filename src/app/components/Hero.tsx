@@ -129,15 +129,13 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-14"
             >
-              <button
+              <a
+                href="https://app.corecapitalpy.com"
                 className="group flex items-center justify-center gap-2 bg-[#39FF71] text-[#0a0b0f] font-semibold px-8 py-4 rounded-2xl text-base hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_30px_rgba(57,255,113,0.4)]"
               >
                 {t.cta}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="flex items-center justify-center gap-2 bg-white/5 border border-white/10 text-white font-medium px-8 py-4 rounded-2xl text-base hover:bg-white/10 transition-all duration-200">
-                {t.watchDemo}
-              </button>
+              </a>
             </motion.div>
 
             {/* Stats */}
