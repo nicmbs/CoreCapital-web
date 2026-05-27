@@ -7,9 +7,9 @@ import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../translations";
 
 const stats = [
-  { value: "$2.4B+", label: "Assets Managed" },
-  { value: "12.4%", label: "Growth" },
-  { value: "150K+", label: "Active Investors" },
+  { value: "$16T", label: "Projected RWA Market (2030)" },
+  { value: "T+0", label: "Yield Settlement" },
+  { value: "100%", label: "Audited Physical Assets" },
 ];
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -51,9 +51,9 @@ export function Hero() {
   const t = translations[language].hero;
 
   const stats = [
-    { value: "$2.4B+", label: t.stats.assets },
-    { value: "12.4%", label: t.stats.growth },
-    { value: "150K+", label: t.stats.users },
+    { value: "$16T", label: t.stats.assets },
+    { value: "T+0", label: t.stats.growth },
+    { value: "100%", label: t.stats.users },
   ];
 
   return (

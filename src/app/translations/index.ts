@@ -19,9 +19,9 @@ export const translations = {
       contactCta: "Contact us",
       watchDemo: "Watch Demo",
       stats: {
-        assets: "Total Assets",
-        growth: "Avg. Growth",
-        users: "Active Users",
+        assets: "Projected RWA Market (2030)",
+        growth: "Yield Settlement",
+        users: "Audited Physical Assets",
       }
     },
     // Features
@@ -298,9 +298,9 @@ export const translations = {
       contactCta: "Contactarse",
       watchDemo: "Ver Demo",
       stats: {
-        assets: "Activos Totales",
-        growth: "Crecimiento Prom.",
-        users: "Usuarios Activos",
+        assets: "Mercado RWA Proyectado (2030)",
+        growth: "Liquidación de Rendimientos",
+        users: "Activos Físicos Auditados",
       }
     },
     // Features
