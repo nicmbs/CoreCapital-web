@@ -108,7 +108,14 @@ export function Pricing() {
                     <span className="text-white/40 text-sm ml-2">/ {t.month}</span>
                   </div>
                   <a
-                    href="https://app.corecapitalpy.com"
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const el = document.getElementById("contact");
+                      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      const nameInput = document.getElementById("contact-name") as HTMLInputElement | null;
+                      setTimeout(() => nameInput?.focus({ preventScroll: true }), 600);
+                    }}
                     className="block w-full text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl text-sm transition-all duration-200 mb-6"
                     style={
                       tier.popular
