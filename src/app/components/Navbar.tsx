@@ -21,6 +21,7 @@ export function Navbar() {
     { label: t.features, href: "#features" },
     { label: t.analytics, href: "#analytics" },
     { label: t.capabilities, href: "#capabilities" },
+    { label: t.contact, href: "#contact" },
   ];
 
   return (

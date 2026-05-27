@@ -6,6 +6,7 @@ export const translations = {
       features: "Features",
       analytics: "Analytics",
       capabilities: "Capabilities",
+      contact: "Contact",
       getStarted: "Get Started",
     },
     // Hero
@@ -284,6 +285,7 @@ export const translations = {
       features: "Funciones",
       analytics: "Analíticas",
       capabilities: "Capacidades",
+      contact: "Contacto",
       getStarted: "Comenzar",
     },
     // Hero
