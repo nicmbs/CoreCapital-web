@@ -107,11 +107,12 @@ export function CTA() {
                 Core<span className="text-[#39FF71]">Capital</span> — Wealth Intelligence Platform
               </span>
             </div>
-            <div className="flex items-center gap-6 text-white/30 text-xs">
-              <a href="#" className="hover:text-white/60 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white/60 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white/60 transition-colors">Security</a>
-            </div>
+            <a
+              href="mailto:contacto@corecapitalpy.com"
+              className="text-white/40 text-xs hover:text-white/70 transition-colors"
+            >
+              contacto@corecapitalpy.com
+            </a>
             <p className="text-white/25 text-xs">© 2026 CoreCapital. All rights reserved.</p>
           </div>
         </div>
