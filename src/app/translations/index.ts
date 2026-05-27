@@ -15,6 +15,7 @@ export const translations = {
       title2: "reimagined",
       subtitle: "CoreCapital is the first AI-native wealth platform designed for tech-savvy investors. Consolidate all your assets, get institutional-grade analytics, and leverage conversational AI to grow your portfolio.",
       cta: "Accede al pre-lanzamiento",
+      contactCta: "Contact us",
       watchDemo: "Watch Demo",
       stats: {
         assets: "Total Assets",
@@ -292,6 +293,7 @@ export const translations = {
       title2: "reimaginado",
       subtitle: "CoreCapital es la primera plataforma de gestión de patrimonio nativa de IA diseñada para inversores tech-savvy. Consolida todos tus activos, obtén análisis de nivel institucional y aprovecha la IA conversacional para hacer crecer tu portafolio.",
       cta: "Accede al pre-lanzamiento",
+      contactCta: "Contactarse",
       watchDemo: "Ver Demo",
       stats: {
         assets: "Activos Totales",

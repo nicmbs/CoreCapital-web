@@ -136,6 +136,19 @@ export function Hero() {
                 {t.cta}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                  setTimeout(() => {
+                    (document.getElementById("contact-name") as HTMLInputElement | null)?.focus({ preventScroll: true });
+                  }, 600);
+                }}
+                className="flex items-center justify-center gap-2 bg-transparent text-white font-semibold px-8 py-4 rounded-2xl text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+              >
+                {t.contactCta}
+              </a>
             </motion.div>
 
             {/* Stats */}
