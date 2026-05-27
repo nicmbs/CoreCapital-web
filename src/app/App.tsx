@@ -3,8 +3,8 @@ import { Hero } from "./components/Hero";
 import { Features } from "./components/Features";
 import { AnalyticsDashboard } from "./components/AnalyticsDashboard";
 import { AIEngines } from "./components/AIEngines";
-import { SocialProof } from "./components/SocialProof";
 import { Pricing } from "./components/Pricing";
+import { Contact } from "./components/Contact";
 import { CTA } from "./components/CTA";
 import { LanguageProvider } from "./context/LanguageContext";
 
@@ -17,8 +17,8 @@ export default function App() {
         <Features />
         <AnalyticsDashboard />
         <AIEngines />
-        <SocialProof />
         <Pricing />
+        <Contact />
         <CTA />
       </div>
     </LanguageProvider>

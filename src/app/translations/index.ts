@@ -14,7 +14,7 @@ export const translations = {
       title1: "Your wealth,",
       title2: "reimagined",
       subtitle: "CoreCapital is the first AI-native wealth platform designed for tech-savvy investors. Consolidate all your assets, get institutional-grade analytics, and leverage conversational AI to grow your portfolio.",
-      cta: "Accede a la app",
+      cta: "Accede al pre-lanzamiento",
       watchDemo: "Watch Demo",
       stats: {
         assets: "Total Assets",
@@ -257,7 +257,7 @@ export const translations = {
       title2: "smarter",
       title3: "today",
       subtitle: "Join thousands of investors using AI to grow their portfolios. No credit card required.",
-      button: "Accede a la app",
+      button: "Accede al pre-lanzamiento",
       footer: {
         tagline: "AI-powered wealth management for the modern investor.",
         product: "Product",
@@ -291,7 +291,7 @@ export const translations = {
       title1: "Tu patrimonio,",
       title2: "reimaginado",
       subtitle: "CoreCapital es la primera plataforma de gestión de patrimonio nativa de IA diseñada para inversores tech-savvy. Consolida todos tus activos, obtén análisis de nivel institucional y aprovecha la IA conversacional para hacer crecer tu portafolio.",
-      cta: "Accede a la app",
+      cta: "Accede al pre-lanzamiento",
       watchDemo: "Ver Demo",
       stats: {
         assets: "Activos Totales",
@@ -534,7 +534,7 @@ export const translations = {
       title2: "más inteligente",
       title3: "hoy",
       subtitle: "Únete a miles de inversores usando IA para hacer crecer sus carteras. No se requiere tarjeta de crédito.",
-      button: "Accede a la app",
+      button: "Accede al pre-lanzamiento",
       footer: {
         tagline: "Gestión de patrimonio con IA para el inversor moderno.",
         product: "Producto",
