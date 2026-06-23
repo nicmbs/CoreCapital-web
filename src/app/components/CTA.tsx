@@ -2,17 +2,15 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { CheckCircle } from "lucide-react";
 import logoImage from "figma:asset/587d4841ce1110b4d856258b2a922555fd7a1195.png";
-
-const perks = [
-  "Free 30-day trial, no credit card",
-  "Cancel anytime",
-  "Bank-grade encryption",
-  "24/7 AI analyst access",
-];
+import { useLanguage } from "../context/LanguageContext";
+import { translations } from "../translations";
 
 export function CTA() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { language } = useLanguage();
+  const t = translations[language].cta;
+  const perks = t.perks;
 
   return (
     <section className="relative bg-[#0a0b0f] py-28 overflow-hidden">
@@ -57,17 +55,17 @@ export function CTA() {
           className="text-white mb-5"
           style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.15 }}
         >
-          Your wealth intelligence{" "}
+          {t.headline1}{" "}
           <br className="hidden md:block" />
           <span
             style={{
-              background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 100%)",
+              background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
           >
-            starts today
+            {t.headline2}
           </span>
         </motion.h2>
 
@@ -78,7 +76,7 @@ export function CTA() {
           className="text-white/50 mb-10 max-w-xl mx-auto"
           style={{ fontSize: "1.1rem", lineHeight: 1.7 }}
         >
-          Join 150,000+ tech-savvy investors already growing their wealth with AI-driven insights. No minimums. No gatekeepers. Just results.
+          {t.finalSubtitle}
         </motion.p>
 
         {/* Perks */}
@@ -104,7 +102,7 @@ export function CTA() {
                 <img src={logoImage} alt="CoreCapital" className="w-full h-full object-cover" />
               </div>
               <span className="text-white/60 text-sm">
-                Core<span className="text-[#39FF71]">Capital</span> — Wealth Intelligence Platform
+                Core<span className="text-[#39FF71]">Capital</span> — {t.brandTagline}
               </span>
             </div>
             <a
@@ -113,7 +111,7 @@ export function CTA() {
             >
               contacto@corecapitalpy.com
             </a>
-            <p className="text-white/25 text-xs">© 2026 CoreCapital. All rights reserved.</p>
+            <p className="text-white/25 text-xs">© 2026 CoreCapital. {t.rightsShort}</p>
           </div>
         </div>
       </div>

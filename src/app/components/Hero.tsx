@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { TrendingUp, Shield, Zap, ArrowRight } from "lucide-react";
+import { TrendingUp, Shield, Zap, ArrowRight, Coins } from "lucide-react";
 import analyticsImage from "figma:asset/ac77aa8ddb3da79c77739a2229387f7229a002b1.png";
 import logoImage from "figma:asset/587d4841ce1110b4d856258b2a922555fd7a1195.png";
 import { useLanguage } from "../context/LanguageContext";
@@ -101,7 +101,7 @@ export function Hero() {
               <br />
               <span
                 style={{
-                  background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 100%)",
+                  background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -127,11 +127,11 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-14"
+              className="grid grid-cols-1 sm:grid-cols-[1.7fr_1fr] gap-4 max-w-xl mx-auto lg:mx-0 mb-14"
             >
               <a
                 href="https://app.corecapitalpy.com"
-                className="group flex items-center justify-center gap-2 bg-[#39FF71] text-[#0a0b0f] font-semibold px-8 py-4 rounded-2xl text-base hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_30px_rgba(57,255,113,0.4)]"
+                className="group flex items-center justify-center gap-2 whitespace-nowrap bg-[#39FF71] text-[#0a0b0f] font-semibold px-6 py-4 rounded-2xl text-base hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_30px_rgba(57,255,113,0.4)]"
               >
                 {t.cta}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -145,9 +145,21 @@ export function Hero() {
                     (document.getElementById("contact-name") as HTMLInputElement | null)?.focus({ preventScroll: true });
                   }, 600);
                 }}
-                className="flex items-center justify-center gap-2 bg-transparent text-white font-semibold px-8 py-4 rounded-2xl text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+                className="flex items-center justify-center gap-2 whitespace-nowrap bg-transparent text-white font-semibold px-6 py-4 rounded-2xl text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
               >
                 {t.contactCta}
+              </a>
+              <a
+                href="#tokenization"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("tokenization")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="group sm:col-span-2 flex items-center justify-center gap-2 bg-[#00d4ff]/10 text-[#00d4ff] font-semibold px-8 py-4 rounded-2xl text-base border border-[#00d4ff]/30 hover:bg-[#00d4ff]/15 hover:border-[#00d4ff]/50 transition-all duration-200"
+              >
+                <Coins size={16} />
+                {t.tokenizationCta}
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
 

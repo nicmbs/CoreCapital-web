@@ -8,19 +8,22 @@ const engines = [
   {
     id: "marketPulse",
     icon: Zap,
-    color: "#39FF71",
+    color: "#39FF71", // hex for alpha-tinted surfaces
+    accent: "var(--cc-accent-green)", // theme-aware icon/text color
     gradient: "from-[#39FF71] to-[#00d4ff]",
   },
   {
     id: "rebalancing",
     icon: RefreshCw,
     color: "#00d4ff",
+    accent: "var(--cc-accent-cyan)",
     gradient: "from-[#00d4ff] to-[#a78bfa]",
   },
   {
     id: "conversational",
     icon: MessageSquare,
     color: "#a78bfa",
+    accent: "#a78bfa",
     gradient: "from-[#a78bfa] to-[#39FF71]",
   },
 ];
@@ -53,12 +56,12 @@ function EngineCard({ engine, index }: { engine: typeof engines[0]; index: numbe
             className="w-14 h-14 rounded-2xl flex items-center justify-center"
             style={{ backgroundColor: `${engine.color}15` }}
           >
-            <Icon size={26} style={{ color: engine.color }} />
+            <Icon size={26} style={{ color: engine.accent }} />
           </div>
           <span
             className="text-xs font-medium px-3 py-1.5 rounded-full"
             style={{
-              color: engine.color,
+              color: engine.accent,
               backgroundColor: `${engine.color}15`,
               border: `1px solid ${engine.color}25`,
             }}
@@ -83,7 +86,7 @@ function EngineCard({ engine, index }: { engine: typeof engines[0]; index: numbe
               transition={{ duration: 0.4, delay: index * 0.15 + i * 0.08 }}
               className="flex items-start gap-2.5"
             >
-              <CheckCircle2 size={16} className="shrink-0 mt-0.5" style={{ color: engine.color }} />
+              <CheckCircle2 size={16} className="shrink-0 mt-0.5" style={{ color: engine.accent }} />
               <span className="text-white/70 text-sm">{feature}</span>
             </motion.div>
           ))}
@@ -128,7 +131,7 @@ export function AIEngines() {
             {t.title1}{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 50%, #a78bfa 100%)",
+                background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 50%, #a78bfa 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",

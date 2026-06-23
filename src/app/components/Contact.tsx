@@ -78,7 +78,7 @@ export function Contact() {
             {t.title1}{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 100%)",
+                background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",

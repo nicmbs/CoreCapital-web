@@ -15,56 +15,60 @@ const portfolioData = [
 
 const statCards = [
   {
-    label: "Total Capital",
-    sub: "Total invested capital",
+    key: "totalCapital",
     value: "$49,656.00",
     icon: DollarSign,
     color: "#39FF71",
     isGreen: true,
   },
   {
-    label: "AVG TAN Interest",
-    sub: "Avg. rate of interest assets",
+    key: "avgTanInterest",
     value: "7.02%",
     icon: TrendingUp,
     color: "#39FF71",
     isGreen: true,
   },
   {
-    label: "Interest / Month",
-    sub: "Monthly net income",
+    key: "interestMonth",
     value: "$152.16",
     icon: Calendar,
     color: "#39FF71",
     isGreen: false,
   },
   {
-    label: "Capital Appreciation",
-    sub: "Capital in appreciation assets",
+    key: "capitalAppreciation",
     value: "$23,630.00",
     icon: BarChart2,
     color: "#39FF71",
     isGreen: false,
   },
   {
-    label: "AVG TAN Capital",
-    sub: "Avg. rate of appreciation assets",
+    key: "avgTanCapital",
     value: "12.50%",
     icon: TrendingUp,
     color: "#39FF71",
     isGreen: true,
   },
   {
-    label: "Appreciation / Month",
-    sub: "Estimated monthly appreciation",
+    key: "appreciationMonth",
     value: "$246.15",
     icon: Calendar,
     color: "#39FF71",
     isGreen: false,
   },
-];
+] as const;
 
-function StatCard({ card, index }: { card: (typeof statCards)[0]; index: number }) {
+function StatCard({
+  card,
+  index,
+  label,
+  sub,
+}: {
+  card: (typeof statCards)[number];
+  index: number;
+  label: string;
+  sub: string;
+}) {
   const Icon = card.icon;
   return (
     <motion.div
@@ -77,7 +81,7 @@ function StatCard({ card, index }: { card: (typeof statCards)[0]; index: number 
       <div className="absolute inset-0 rounded-2xl bg-[#39FF71]/0 group-hover:bg-[#39FF71]/3 transition-all duration-500" />
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-3">
-          <span className="text-white/40 text-xs uppercase tracking-widest">{card.label}</span>
+          <span className="text-white/40 text-xs uppercase tracking-widest">{label}</span>
           <div className="w-8 h-8 rounded-lg bg-[#39FF71]/12 flex items-center justify-center">
             <Icon size={14} className="text-[#39FF71]" />
           </div>
@@ -87,13 +91,13 @@ function StatCard({ card, index }: { card: (typeof statCards)[0]; index: number 
           style={{
             fontSize: "clamp(1.3rem, 2.5vw, 1.7rem)",
             fontWeight: 700,
-            color: card.isGreen ? "#39FF71" : "#ffffff",
+            color: card.isGreen ? "#39FF71" : "var(--cc-text-strong)",
             letterSpacing: "-0.02em",
           }}
         >
           {card.value}
         </div>
-        <div className="text-white/35 text-xs">{card.sub}</div>
+        <div className="text-white/35 text-xs">{sub}</div>
       </div>
     </motion.div>
   );
@@ -121,6 +125,7 @@ export function AnalyticsDashboard() {
   const totalCapital = portfolioData.reduce((a, b) => a + b.value, 0);
 
   const { language } = useLanguage();
+  const t = translations[language].analytics;
 
   return (
     <section id="analytics" className="relative bg-[#0a0b0f] py-28 overflow-hidden">
@@ -139,7 +144,7 @@ export function AnalyticsDashboard() {
             className="inline-flex items-center gap-2 bg-[#39FF71]/10 border border-[#39FF71]/20 rounded-full px-4 py-1.5 mb-6"
           >
             <div className="w-1.5 h-1.5 rounded-full bg-[#39FF71] animate-pulse" />
-            <span className="text-[#39FF71] text-sm font-medium">Live Portfolio Analytics</span>
+            <span className="text-[#39FF71] text-sm font-medium">{t.badge}</span>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -148,16 +153,16 @@ export function AnalyticsDashboard() {
             className="text-white mb-4"
             style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, letterSpacing: "-0.02em" }}
           >
-            Your wealth,{" "}
+            {t.title1}{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 100%)",
+                background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
-              at a glance
+              {t.title2}
             </span>
           </motion.h2>
           <motion.p
@@ -167,14 +172,20 @@ export function AnalyticsDashboard() {
             className="text-white/50 max-w-xl mx-auto"
             style={{ fontSize: "1.05rem", lineHeight: 1.7 }}
           >
-            Real-time capital tracking, income projections, and asset-class breakdowns — all in one unified dashboard.
+            {t.subtitle}
           </motion.p>
         </div>
 
         {/* Stat Cards Grid — 6 cards, 3x2 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
           {statCards.map((card, i) => (
-            <StatCard key={card.label} card={card} index={i} />
+            <StatCard
+              key={card.key}
+              card={card}
+              index={i}
+              label={t.stats[card.key].label}
+              sub={t.stats[card.key].sub}
+            />
           ))}
         </div>
 
@@ -188,7 +199,7 @@ export function AnalyticsDashboard() {
             transition={{ duration: 0.6 }}
             className="bg-[#111318] border border-white/6 rounded-2xl p-6"
           >
-            <div className="text-white/40 text-xs uppercase tracking-widest mb-6">Portfolio</div>
+            <div className="text-white/40 text-xs uppercase tracking-widest mb-6">{t.portfolio}</div>
 
             <div className="flex flex-col sm:flex-row items-center gap-6">
               {/* Chart */}
@@ -247,19 +258,19 @@ export function AnalyticsDashboard() {
             >
               <div>
                 <div className="text-white/40 text-xs uppercase tracking-widest mb-2">
-                  Capitalization / Month
+                  {t.capitalization.label}
                 </div>
                 <div
                   style={{
                     fontSize: "2rem",
                     fontWeight: 700,
-                    color: "#ffffff",
+                    color: "var(--cc-text-strong)",
                     letterSpacing: "-0.02em",
                   }}
                 >
                   $398.31
                 </div>
-                <div className="text-white/40 text-xs mt-1">Estimated monthly reinvestment</div>
+                <div className="text-white/40 text-xs mt-1">{t.capitalization.sub}</div>
               </div>
               <div className="w-12 h-12 rounded-xl bg-[#39FF71]/12 flex items-center justify-center">
                 <TrendingUp size={22} className="text-[#39FF71]" />
@@ -275,7 +286,7 @@ export function AnalyticsDashboard() {
               className="bg-[#111318] border border-white/6 rounded-2xl p-5 flex-1"
             >
               <div className="text-white/40 text-xs uppercase tracking-widest mb-5">
-                Detail by Asset Type
+                {t.detail}
               </div>
               <div className="space-y-4">
                 {portfolioData.map((item, i) => (

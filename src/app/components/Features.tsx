@@ -19,14 +19,14 @@ import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../translations";
 
 const featureIcons = [
-  { id: "aiAnalyst", icon: Brain, color: "#39FF71" },
-  { id: "analytics", icon: BarChart3, color: "#00d4ff" },
+  { id: "aiAnalyst", icon: Brain, color: "var(--cc-accent-green)" },
+  { id: "analytics", icon: BarChart3, color: "var(--cc-accent-cyan)" },
   { id: "projections", icon: TrendingUp, color: "#a78bfa" },
-  { id: "research", icon: Globe, color: "#39FF71" },
+  { id: "research", icon: Globe, color: "var(--cc-accent-green)" },
   { id: "alerts", icon: Bell, color: "#f59e0b" },
-  { id: "rebalancing", icon: RefreshCw, color: "#00d4ff" },
+  { id: "rebalancing", icon: RefreshCw, color: "var(--cc-accent-cyan)" },
   { id: "multiAsset", icon: DollarSign, color: "#a78bfa" },
-  { id: "security", icon: Shield, color: "#39FF71" },
+  { id: "security", icon: Shield, color: "var(--cc-accent-green)" },
 ];
 
 function FeatureCard({ feature, index }: { feature: typeof featureIcons[0]; index: number }) {
@@ -117,7 +117,7 @@ export function Features() {
             {t.title1}{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 100%)",
+                background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -170,12 +170,12 @@ export function Features() {
                   transition={{ duration: 0.6, delay: i * 0.15 }}
                   className="group relative bg-[#111318] border border-white/6 rounded-3xl overflow-hidden hover:border-white/15 transition-all duration-300"
                 >
-                  <div className="relative overflow-hidden">
+                  <div className="relative overflow-hidden aspect-[16/10]">
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111318] via-transparent to-transparent z-10 pointer-events-none" />
                     <img
                       src={item.img}
                       alt={screenData.title}
-                      className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
+                      className="w-full h-full object-cover object-top block group-hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
                   <div className="p-6">

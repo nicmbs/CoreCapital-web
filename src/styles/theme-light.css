@@ -1,0 +1,91 @@
+/*
+  Light mode for the marketing site.
+
+  The landing is authored dark-first with hardcoded color utilities
+  (bg-[#0a0b0f], text-white/50, border-white/6, ...). Rather than rewrite
+  every component, light mode remaps those exact utilities to light
+  equivalents, scoped under the `.theme-light` root. Brand accents
+  (#39FF71 green, #00d4ff cyan) are intentionally kept in both themes.
+
+  These rules live outside Tailwind's cascade layer, so they win over the
+  layered utilities regardless of specificity.
+*/
+
+/* Theme-aware variables consumed by inline styles that can't use classes. */
+.theme-dark {
+  --cc-text-strong: #ffffff;
+  /* Neon accents are tuned for dark backgrounds. */
+  --cc-accent-green: #39ff71;
+  --cc-accent-cyan: #00d4ff;
+}
+.theme-light {
+  --cc-text-strong: #0a0b0f;
+  /* Deeper, saturated accents that keep contrast on light surfaces. */
+  --cc-accent-green: #0ca05a;
+  --cc-accent-cyan: #0891b2;
+}
+
+/* Recolor accent TEXT/ICONS (set via utility classes) for light mode.
+   Solid accent fills (e.g. the green CTA button) intentionally stay neon. */
+.theme-light .text-\[\#39FF71\] { color: var(--cc-accent-green); }
+.theme-light .text-\[\#00d4ff\] { color: var(--cc-accent-cyan); }
+
+/* Slightly stronger accent border + tile tints so deepened icons sit well. */
+.theme-light .bg-\[\#39FF71\]\/12 { background-color: rgba(12, 160, 90, 0.14); }
+.theme-light .bg-\[\#39FF71\]\/15 { background-color: rgba(12, 160, 90, 0.16); }
+.theme-light .bg-\[\#39FF71\]\/10 { background-color: rgba(12, 160, 90, 0.12); }
+.theme-light .bg-\[\#00d4ff\]\/12 { background-color: rgba(8, 145, 178, 0.14); }
+.theme-light .bg-\[\#00d4ff\]\/15 { background-color: rgba(8, 145, 178, 0.16); }
+.theme-light .bg-\[\#00d4ff\]\/10 { background-color: rgba(8, 145, 178, 0.12); }
+
+/* App root background */
+.cc-root {
+  min-height: 100vh;
+  background-color: #0a0b0f;
+}
+.theme-light.cc-root {
+  background-color: #f4f6f9;
+}
+
+/* ---- Surfaces ---------------------------------------------------------- */
+.theme-light .bg-\[\#0a0b0f\] { background-color: #eef1f5; }
+.theme-light .bg-\[\#111318\] { background-color: #ffffff; }
+.theme-light .bg-\[\#1a1d24\] { background-color: #ffffff; }
+
+/* Translucent surfaces (navbar / mobile menu / overlays) */
+.theme-light .bg-\[\#0a0b0f\]\/90 { background-color: rgba(244, 246, 249, 0.85); }
+.theme-light .bg-\[\#0a0b0f\]\/95 { background-color: rgba(244, 246, 249, 0.95); }
+.theme-light .bg-\[\#111318\]\/80 { background-color: rgba(255, 255, 255, 0.85); }
+
+/* White-tint surfaces become subtle dark tints on light backgrounds */
+.theme-light .bg-white\/5 { background-color: rgba(10, 11, 15, 0.04); }
+.theme-light .bg-white\/10 { background-color: rgba(10, 11, 15, 0.07); }
+.theme-light .hover\:bg-white\/5:hover { background-color: rgba(10, 11, 15, 0.05); }
+.theme-light .hover\:bg-white\/10:hover { background-color: rgba(10, 11, 15, 0.09); }
+
+/* ---- Text ------------------------------------------------------------- */
+.theme-light .text-white { color: #0a0b0f; }
+.theme-light .text-white\/70 { color: rgba(10, 11, 15, 0.74); }
+.theme-light .text-white\/60 { color: rgba(10, 11, 15, 0.66); }
+.theme-light .text-white\/55 { color: rgba(10, 11, 15, 0.62); }
+.theme-light .text-white\/50 { color: rgba(10, 11, 15, 0.60); }
+.theme-light .text-white\/45 { color: rgba(10, 11, 15, 0.56); }
+.theme-light .text-white\/40 { color: rgba(10, 11, 15, 0.52); }
+.theme-light .text-white\/35 { color: rgba(10, 11, 15, 0.48); }
+.theme-light .text-white\/25 { color: rgba(10, 11, 15, 0.42); }
+.theme-light .text-white\/20 { color: rgba(10, 11, 15, 0.38); }
+
+/* ---- Borders ---------------------------------------------------------- */
+.theme-light .border-white\/5 { border-color: rgba(10, 11, 15, 0.08); }
+.theme-light .border-white\/6 { border-color: rgba(10, 11, 15, 0.09); }
+.theme-light .border-white\/8 { border-color: rgba(10, 11, 15, 0.10); }
+.theme-light .border-white\/10 { border-color: rgba(10, 11, 15, 0.12); }
+.theme-light .border-white\/12 { border-color: rgba(10, 11, 15, 0.13); }
+.theme-light .border-white\/15 { border-color: rgba(10, 11, 15, 0.15); }
+.theme-light .border-white\/30 { border-color: rgba(10, 11, 15, 0.22); }
+
+/* Divider gradient stops authored as white */
+.theme-light .via-white\/8 { --tw-gradient-via: rgba(10, 11, 15, 0.10); }
+
+/* Section-fade gradient authored from the dark page color (e.g. Hero bottom fade) */
+.theme-light .from-\[\#0a0b0f\] { --tw-gradient-from: #f4f6f9; }

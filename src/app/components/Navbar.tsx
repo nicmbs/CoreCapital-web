@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Globe } from "lucide-react";
+import { Globe, Sun, Moon } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeContext";
 import { translations } from "../translations";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const t = translations[language].nav;
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export function Navbar() {
     { label: t.features, href: "#features" },
     { label: t.analytics, href: "#analytics" },
     { label: t.capabilities, href: "#capabilities" },
+    { label: t.tokenization, href: "#tokenization" },
     { label: t.contact, href: "#contact" },
   ];
 
@@ -62,7 +65,17 @@ export function Navbar() {
             <Globe size={16} />
             <span className="uppercase font-medium">{language}</span>
           </button>
-          
+
+          {/* Theme Switcher */}
+          <button
+            onClick={toggleTheme}
+            className="flex items-center text-white/60 hover:text-white transition-colors duration-200"
+            title={theme === "light" ? "Modo oscuro / Dark mode" : "Modo claro / Light mode"}
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
+
           <a
             href="#pricing"
             className="bg-[#39FF71] text-[#0a0b0f] text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_20px_rgba(57,255,113,0.3)]"
@@ -112,7 +125,16 @@ export function Navbar() {
               <Globe size={16} />
               <span>{language === "en" ? "Cambiar a Español" : "Switch to English"}</span>
             </button>
-            
+
+            {/* Mobile Theme Switcher */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 text-white/70 hover:text-white py-3 text-sm border-b border-white/5 w-full"
+            >
+              {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+              <span>{theme === "light" ? "Modo oscuro" : "Modo claro"}</span>
+            </button>
+
             <a
               href="#pricing"
               onClick={() => setMenuOpen(false)}

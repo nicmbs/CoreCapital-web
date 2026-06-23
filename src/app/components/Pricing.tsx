@@ -5,9 +5,9 @@ import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../translations";
 
 const tierIcons = [
-  { id: "explorer", icon: BarChart2, color: "#ffffff", bgColor: "#ffffff08", borderColor: "#ffffff12" },
-  { id: "essential", icon: Zap, color: "#00d4ff", bgColor: "#00d4ff08", borderColor: "#00d4ff20" },
-  { id: "insightAI", icon: Sparkles, color: "#39FF71", bgColor: "#39FF7112", borderColor: "#39FF7130", popular: true },
+  { id: "explorer", icon: BarChart2, color: "var(--cc-text-strong)", bgColor: "#ffffff08", borderColor: "#ffffff12" },
+  { id: "essential", icon: Zap, color: "var(--cc-accent-cyan)", bgColor: "#00d4ff08", borderColor: "#00d4ff20" },
+  { id: "insightAI", icon: Sparkles, color: "var(--cc-accent-green)", bgColor: "#39FF7112", borderColor: "#39FF7130", popular: true },
   { id: "strategistAI", icon: MessageSquare, color: "#a78bfa", bgColor: "#a78bfa08", borderColor: "#a78bfa25" },
 ];
 
@@ -46,7 +46,7 @@ export function Pricing() {
             {t.title1}{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #39FF71 0%, #00d4ff 100%)",
+                background: "linear-gradient(135deg, var(--cc-accent-green) 0%, var(--cc-accent-cyan) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",

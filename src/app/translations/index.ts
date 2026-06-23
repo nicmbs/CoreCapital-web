@@ -6,6 +6,7 @@ export const translations = {
       features: "Features",
       analytics: "Analytics",
       capabilities: "Capabilities",
+      tokenization: "Tokenization",
       contact: "Contact",
       getStarted: "Get Started",
     },
@@ -17,6 +18,7 @@ export const translations = {
       subtitle: "CoreCapital is the first AI-native wealth platform designed for tech-savvy investors. Consolidate all your assets, get institutional-grade analytics, and leverage conversational AI to grow your portfolio.",
       cta: "Accede al pre-lanzamiento",
       contactCta: "Contact us",
+      tokenizationCta: "Explore tokenization",
       watchDemo: "Watch Demo",
       stats: {
         assets: "Projected RWA Market (2030)",
@@ -99,9 +101,9 @@ export const translations = {
           features: ["Real Estate", "Corporate Bonds", "Bank CDAs", "Mutual Funds", "Commodities", "Private Equity"],
         },
         tokenized: {
-          title: "Tokenized Assets",
-          description: "Crypto portfolios, DeFi positions, NFTs, and tokenized securities — tracked with real-time on-chain data and AI-powered risk analysis.",
-          features: ["Crypto Portfolios", "DeFi Positions", "NFTs", "Tokenized Securities", "Staking Rewards", "Liquidity Pools"],
+          title: "Tokenized Real-World Assets",
+          description: "Real estate, corporate bonds, farmland, livestock, and trade receivables brought on-chain. Own fractional stakes, earn periodic yield, and settle instantly with full on-chain transparency.",
+          features: ["Real Estate", "Corporate Bonds", "Farmland & Ranches", "Trade Receivables", "Fractional Ownership", "On-Chain Yield"],
         },
       },
     },
@@ -186,6 +188,77 @@ export const translations = {
         },
       },
     },
+    // Tokenization
+    tokenization: {
+      badge: "Real-World Asset Tokenization",
+      title1: "Real assets,",
+      title2: "made liquid",
+      subtitle: "CoreCapital turns real-world assets — property, bonds, farmland and more — into fractional, tradable tokens. Institutional-grade access, opened to every investor.",
+      stepsLabel: "How it works",
+      steps: [
+        {
+          title: "Sourced & audited",
+          desc: "Each asset is verified against legal title, registry and ownership records, and independently valued before it ever goes on-chain.",
+        },
+        {
+          title: "Tokenized on-chain",
+          desc: "A smart contract is deployed and the asset is split into fractional tokens, each backed 1:1 by the real underlying asset.",
+        },
+        {
+          title: "Own a fraction",
+          desc: "Buy fractional stakes and settle T+0 — no clearing delays, no gatekeepers, full transparency.",
+        },
+        {
+          title: "Earn & redeem",
+          desc: "Collect periodic yield straight to your wallet, resell on the secondary market, or redeem capital plus interest at maturity.",
+        },
+      ],
+      assetsLabel: "What you can own",
+      assets: [
+        "Real Estate",
+        "Corporate Bonds",
+        "Farmland & Ranches",
+        "Livestock",
+        "Trade Receivables",
+        "Machinery",
+        "Agri-Commodities",
+        "Infrastructure & Energy",
+      ],
+      benefitsLabel: "Why tokenize with CoreCapital",
+      benefits: [
+        {
+          title: "Fractional ownership",
+          desc: "Own a slice of a multi-million-dollar property or a corporate bond — diversify across assets you couldn't buy whole.",
+        },
+        {
+          title: "Instant T+0 settlement",
+          desc: "Trades settle on-chain in minutes, not days. No traditional clearing, no counterparty limbo.",
+        },
+        {
+          title: "Periodic yield",
+          desc: "Fixed-income assets pay interest, rent or coupons (TAN) auto-credited to your wallet — monthly, quarterly or annually.",
+        },
+        {
+          title: "Built-in liquidity",
+          desc: "Exit when you need to. List tokens on the peer-to-peer secondary market at the price you choose.",
+        },
+        {
+          title: "Redemption at maturity",
+          desc: "At maturity, tokens are redeemed at par plus accrued yield — or repurchased by the issuer.",
+        },
+        {
+          title: "Audited, real backing",
+          desc: "Every token is backed by a real, legally registered asset with a verified issuer (RUC) and documents on file.",
+        },
+      ],
+      stats: [
+        { value: "$16T", label: "Projected RWA market by 2030" },
+        { value: "T+0", label: "On-chain settlement" },
+        { value: "24/7", label: "Secondary market access" },
+        { value: "100%", label: "Asset-backed & audited" },
+      ],
+      cta: "Accede al pre-lanzamiento",
+    },
     // Pricing
     pricing: {
       badge: "Flexible Pricing",
@@ -260,6 +333,17 @@ export const translations = {
       title3: "today",
       subtitle: "Join thousands of investors using AI to grow their portfolios. No credit card required.",
       button: "Accede al pre-lanzamiento",
+      headline1: "Your wealth intelligence",
+      headline2: "starts today",
+      finalSubtitle: "Join 150,000+ tech-savvy investors already growing their wealth with AI-driven insights. No minimums. No gatekeepers. Just results.",
+      perks: [
+        "Free 30-day trial, no credit card",
+        "Cancel anytime",
+        "Bank-grade encryption",
+        "24/7 AI analyst access",
+      ],
+      brandTagline: "Wealth Intelligence Platform",
+      rightsShort: "All rights reserved.",
       footer: {
         tagline: "AI-powered wealth management for the modern investor.",
         product: "Product",
@@ -285,6 +369,7 @@ export const translations = {
       features: "Funciones",
       analytics: "Analíticas",
       capabilities: "Capacidades",
+      tokenization: "Tokenización",
       contact: "Contacto",
       getStarted: "Comenzar",
     },
@@ -296,6 +381,7 @@ export const translations = {
       subtitle: "CoreCapital es la primera plataforma de gestión de patrimonio nativa de IA diseñada para inversores tech-savvy. Consolida todos tus activos, obtén análisis de nivel institucional y aprovecha la IA conversacional para hacer crecer tu portafolio.",
       cta: "Accede al pre-lanzamiento",
       contactCta: "Contactarse",
+      tokenizationCta: "Explorar tokenización",
       watchDemo: "Ver Demo",
       stats: {
         assets: "Mercado RWA Proyectado (2030)",
@@ -378,9 +464,9 @@ export const translations = {
           features: ["Bienes Raíces", "Bonos Corporativos", "CDAs Bancarios", "Fondos Mutuos", "Commodities", "Private Equity"],
         },
         tokenized: {
-          title: "Activos Tokenizados",
-          description: "Carteras crypto, posiciones DeFi, NFTs y valores tokenizados — rastreados con datos on-chain en tiempo real y análisis de riesgo con IA.",
-          features: ["Carteras Crypto", "Posiciones DeFi", "NFTs", "Valores Tokenizados", "Recompensas Staking", "Pools de Liquidez"],
+          title: "Activos del Mundo Real Tokenizados",
+          description: "Inmuebles, bonos corporativos, campos, ganado y facturas cambiarias llevados on-chain. Posee fracciones, gana rendimientos periódicos y liquida al instante con transparencia on-chain total.",
+          features: ["Inmuebles", "Bonos Corporativos", "Campos y Estancias", "Facturas Cambiarias", "Propiedad Fraccionada", "Rendimiento On-Chain"],
         },
       },
     },
@@ -465,6 +551,77 @@ export const translations = {
         },
       },
     },
+    // Tokenization
+    tokenization: {
+      badge: "Tokenización de Activos del Mundo Real",
+      title1: "Activos reales,",
+      title2: "hechos líquidos",
+      subtitle: "CoreCapital convierte activos del mundo real — inmuebles, bonos, campos y más — en tokens fraccionados y negociables. Acceso de nivel institucional, abierto a todo inversor.",
+      stepsLabel: "Cómo funciona",
+      steps: [
+        {
+          title: "Originado y auditado",
+          desc: "Cada activo se verifica contra título legal, registros de propiedad y catastrales, y se valúa de forma independiente antes de llevarlo on-chain.",
+        },
+        {
+          title: "Tokenizado on-chain",
+          desc: "Se despliega un smart contract y el activo se divide en tokens fraccionados, cada uno respaldado 1:1 por el activo real subyacente.",
+        },
+        {
+          title: "Posee una fracción",
+          desc: "Compra participaciones fraccionadas y liquida en T+0 — sin demoras de compensación, sin intermediarios, con total transparencia.",
+        },
+        {
+          title: "Gana y rescata",
+          desc: "Cobra rendimientos periódicos directo a tu wallet, revende en el mercado secundario o rescata capital más intereses al vencimiento.",
+        },
+      ],
+      assetsLabel: "Lo que puedes poseer",
+      assets: [
+        "Inmuebles",
+        "Bonos Corporativos",
+        "Campos y Estancias",
+        "Ganado",
+        "Facturas Cambiarias",
+        "Maquinaria",
+        "Commodities Agrícolas",
+        "Infraestructura y Energía",
+      ],
+      benefitsLabel: "Por qué tokenizar con CoreCapital",
+      benefits: [
+        {
+          title: "Propiedad fraccionada",
+          desc: "Posee una parte de un inmueble millonario o un bono corporativo — diversifica en activos que no podrías comprar enteros.",
+        },
+        {
+          title: "Liquidación instantánea T+0",
+          desc: "Las operaciones liquidan on-chain en minutos, no en días. Sin compensación tradicional, sin esperas de contraparte.",
+        },
+        {
+          title: "Rendimiento periódico",
+          desc: "Los activos de renta fija pagan intereses, renta o cupones (TAN) acreditados automáticamente a tu wallet — mensual, trimestral o anual.",
+        },
+        {
+          title: "Liquidez incorporada",
+          desc: "Sal cuando lo necesites. Lista tus tokens en el mercado secundario entre pares al precio que elijas.",
+        },
+        {
+          title: "Rescate al vencimiento",
+          desc: "Al vencimiento, los tokens se rescatan a la par más el rendimiento acumulado — o los recompra el emisor.",
+        },
+        {
+          title: "Respaldo real y auditado",
+          desc: "Cada token está respaldado por un activo real, legalmente registrado, con emisor verificado (RUC) y documentos en archivo.",
+        },
+      ],
+      stats: [
+        { value: "$16T", label: "Mercado RWA proyectado a 2030" },
+        { value: "T+0", label: "Liquidación on-chain" },
+        { value: "24/7", label: "Acceso al mercado secundario" },
+        { value: "100%", label: "Respaldado y auditado" },
+      ],
+      cta: "Accede al pre-lanzamiento",
+    },
     // Pricing
     pricing: {
       badge: "Precios Flexibles",
@@ -539,6 +696,17 @@ export const translations = {
       title3: "hoy",
       subtitle: "Únete a miles de inversores usando IA para hacer crecer sus carteras. No se requiere tarjeta de crédito.",
       button: "Accede al pre-lanzamiento",
+      headline1: "Tu inteligencia patrimonial",
+      headline2: "comienza hoy",
+      finalSubtitle: "Únete a más de 150.000 inversores tech-savvy que ya hacen crecer su patrimonio con análisis impulsados por IA. Sin mínimos. Sin intermediarios. Solo resultados.",
+      perks: [
+        "Prueba gratis de 30 días, sin tarjeta de crédito",
+        "Cancela cuando quieras",
+        "Encriptación de nivel bancario",
+        "Acceso al analista IA 24/7",
+      ],
+      brandTagline: "Plataforma de Inteligencia Patrimonial",
+      rightsShort: "Todos los derechos reservados.",
       footer: {
         tagline: "Gestión de patrimonio con IA para el inversor moderno.",
         product: "Producto",
