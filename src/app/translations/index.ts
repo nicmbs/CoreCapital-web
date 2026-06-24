@@ -24,6 +24,15 @@ export const translations = {
         assets: "Projected RWA Market (2030)",
         growth: "Yield Settlement",
         users: "Audited Physical Assets",
+      },
+      floating: {
+        monthlyReturn: "Monthly Return",
+        bankGrade: "Bank-Grade",
+        encryption: "256-bit Encryption",
+        aiAnalyst: "AI Analyst",
+        liveInsights: "Live Insights",
+        platform: "Wealth Intelligence Platform",
+        aiLive: "AI-Powered · Live",
       }
     },
     // Features
@@ -387,6 +396,15 @@ export const translations = {
         assets: "Mercado RWA Proyectado (2030)",
         growth: "Liquidación de Rendimientos",
         users: "Activos Físicos Auditados",
+      },
+      floating: {
+        monthlyReturn: "Retorno Mensual",
+        bankGrade: "Grado Bancario",
+        encryption: "Encriptación de 256 bits",
+        aiAnalyst: "Analista IA",
+        liveInsights: "Insights en Vivo",
+        platform: "Plataforma de Inteligencia Patrimonial",
+        aiLive: "Impulsado por IA · En Vivo",
       }
     },
     // Features

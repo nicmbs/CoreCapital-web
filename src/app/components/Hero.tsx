@@ -209,7 +209,7 @@ export function Hero() {
               </div>
               <div>
                 <div className="text-[#39FF71] text-sm font-semibold">+12.4%</div>
-                <div className="text-white/50 text-xs">Monthly Return</div>
+                <div className="text-white/50 text-xs">{t.floating.monthlyReturn}</div>
               </div>
             </motion.div>
 
@@ -222,8 +222,8 @@ export function Hero() {
                 <Shield size={16} className="text-cyan-400" />
               </div>
               <div>
-                <div className="text-white text-sm font-semibold">Bank-Grade</div>
-                <div className="text-white/50 text-xs">256-bit Encryption</div>
+                <div className="text-white text-sm font-semibold">{t.floating.bankGrade}</div>
+                <div className="text-white/50 text-xs">{t.floating.encryption}</div>
               </div>
             </motion.div>
 
@@ -236,8 +236,8 @@ export function Hero() {
                 <Zap size={16} className="text-[#39FF71]" />
               </div>
               <div>
-                <div className="text-white text-sm font-semibold">AI Analyst</div>
-                <div className="text-white/50 text-xs">Live Insights</div>
+                <div className="text-white text-sm font-semibold">{t.floating.aiAnalyst}</div>
+                <div className="text-white/50 text-xs">{t.floating.liveInsights}</div>
               </div>
             </motion.div>
 
@@ -274,10 +274,10 @@ export function Hero() {
                   <div className="text-white font-bold" style={{ fontSize: "1.35rem", letterSpacing: "-0.01em" }}>
                     Core<span className="text-[#39FF71]">Capital</span>
                   </div>
-                  <div className="text-white/40 text-xs mt-0.5">Wealth Intelligence Platform</div>
+                  <div className="text-white/40 text-xs mt-0.5">{t.floating.platform}</div>
                   <div className="flex items-center gap-1.5 mt-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#39FF71] animate-pulse" />
-                    <span className="text-[#39FF71] text-xs">AI-Powered · Live</span>
+                    <span className="text-[#39FF71] text-xs">{t.floating.aiLive}</span>
                   </div>
                 </div>
               </motion.div>
