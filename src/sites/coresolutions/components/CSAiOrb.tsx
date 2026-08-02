@@ -11,14 +11,15 @@ import { csBrand } from "../brand";
 /**
  * Preferred: real 3D looping video (Dreamstime / stock style).
  * Drop licensed files here:
- *   public/coresolutions/orb-live.webm  (best)
- *   public/coresolutions/orb-live.mp4   (fallback)
+ *   public/cs/orb-live.webm  (best)
+ *   public/cs/orb-live.mp4   (fallback)
  * Until then we use the transparent WebP morph loop.
+ * Assets live under /cs (not /coresolutions) so the SPA route is not shadowed.
  */
-const VIDEO_WEBM = "/coresolutions/orb-live.webm?v=4";
-const VIDEO_MP4 = "/coresolutions/orb-live.mp4?v=4";
-const WEBP_LOOP = "/coresolutions/orb-live.webp?v=3";
-const STILL = "/coresolutions/orb-a-clear.png?v=3";
+const VIDEO_WEBM = "/cs/orb-live.webm?v=4";
+const VIDEO_MP4 = "/cs/orb-live.mp4?v=4";
+const WEBP_LOOP = "/cs/orb-live.webp?v=3";
+const STILL = "/cs/orb-a-clear.png?v=3";
 
 /**
  * Presentation mode:

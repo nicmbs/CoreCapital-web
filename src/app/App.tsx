@@ -11,7 +11,8 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<CoreCapitalPage />} />
-            <Route path="/coresolutions" element={<CoreSolutionsPage />} />
+            {/* /* matches /coresolutions and /coresolutions/ (GitHub Pages trailing slash) */}
+            <Route path="/coresolutions/*" element={<CoreSolutionsPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>

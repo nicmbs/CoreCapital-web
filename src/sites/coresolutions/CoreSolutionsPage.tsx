@@ -6,7 +6,7 @@ import { csSections } from "./content";
 
 /**
  * CoreSolutions marketing site — structured for a future dedicated domain.
- * Assets live under /public/coresolutions/
+ * Assets live under /public/cs/
  */
 export default function CoreSolutionsPage() {
   return (
@@ -22,7 +22,7 @@ export default function CoreSolutionsPage() {
         <div
           className="absolute inset-0 opacity-40"
           style={{
-            backgroundImage: "url(/coresolutions/page-atmosphere.png)",
+            backgroundImage: "url(/cs/page-atmosphere.png)",
             backgroundSize: "cover",
             backgroundPosition: "center right",
           }}

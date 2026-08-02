@@ -9,7 +9,7 @@ A real 3D looping clip — metallic / glass object floating and morphing in spac
 2. Save as:
    - `orb-live.webm` (preferred), and/or
    - `orb-live.mp4`
-3. Refresh `/coresolutions` — `CSAiOrb` auto-detects the video and plays it muted/looped.
+3. Refresh `/coresolutions` — `CSAiOrb` auto-detects files in `/cs/` and plays them muted/looped.
 4. Black plate is removed in the UI with `mix-blend-mode: screen`.
 
 Until a video file is present, the page falls back to `orb-live.webp`.

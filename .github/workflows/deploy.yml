@@ -29,8 +29,11 @@ jobs:
         run: pnpm install
       - name: Build
         run: pnpm build
-      - name: Add .nojekyll
-        run: touch dist/.nojekyll
+      - name: Add .nojekyll and SPA fallback
+        run: |
+          touch dist/.nojekyll
+          # GitHub Pages serves 404.html for unknown paths (e.g. /coresolutions)
+          cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
