@@ -1,9 +1,16 @@
 import { motion } from "motion/react";
-import { csBrand } from "../brand";
-import { csHomeCopy } from "../content";
+import { useLanguage } from "../../../app/context/LanguageContext";
+import { useTheme } from "../../../app/context/ThemeContext";
+import { csBrand, csTheme } from "../brand";
+import { csTranslations } from "../content";
 import { CSAiOrb } from "./CSAiOrb";
 
 export function CSHome() {
+  const { language } = useLanguage();
+  const { theme } = useTheme();
+  const t = csTranslations[language].home;
+  const surface = csTheme(theme);
+
   return (
     <section
       id="home"
@@ -27,7 +34,7 @@ export function CSHome() {
                 style={{ backgroundColor: csBrand.blueBright }}
               />
               <span className="text-sm font-medium" style={{ color: csBrand.blueBright }}>
-                {csHomeCopy.aboutBadge}
+                {t.aboutBadge}
               </span>
             </motion.div>
 
@@ -35,15 +42,16 @@ export function CSHome() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-white mb-12"
+              className="mb-12"
               style={{
-                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                fontSize: "clamp(2rem, 4.5vw, 3.25rem)",
                 fontWeight: 700,
-                lineHeight: 1.1,
+                lineHeight: 1.15,
                 letterSpacing: "-0.02em",
+                color: surface.fg,
               }}
             >
-              {csHomeCopy.tagline}
+              {t.tagline}
             </motion.h1>
 
             <motion.div
@@ -60,18 +68,19 @@ export function CSHome() {
                   color: csBrand.blueBright,
                 }}
               >
-                {csHomeCopy.aboutTitle}
+                {t.aboutTitle}
               </h2>
               <div
                 className="space-y-4 max-w-xl mx-auto lg:mx-0"
-                style={{ fontSize: "1.05rem", lineHeight: 1.7, color: "rgba(255,255,255,0.7)" }}
+                style={{ fontSize: "1.05rem", lineHeight: 1.7, color: surface.muted }}
               >
                 <p>
-                  CoreSolutions es una firma de ingeniería de software y servicios profesionales
-                  centrada en Inteligencia Artificial{" "}
-                  <span style={{ color: csBrand.blueBright, fontWeight: 600 }}>(AI-centric)</span>.
+                  {t.aboutP1Before}
+                  <span style={{ color: csBrand.blueBright, fontWeight: 600 }}>{t.aboutP1Accent}</span>
+                  {t.aboutP1After}
                 </p>
-                <p>{csHomeCopy.aboutP2}</p>
+                <p>{t.aboutP2}</p>
+                <p>{t.aboutP3}</p>
               </div>
             </motion.div>
           </div>

@@ -16,17 +16,29 @@ export type CSSection = {
   ctaHref?: string;
 };
 
-export const csHomeCopy = {
-  tagline: "AI - Powered ecosystems for business",
-  aboutBadge: "Sobre nosotros",
-  aboutTitle: "Nuestro ADN",
-  aboutP1:
-    "CoreSolutions es una firma de ingeniería de software y servicios profesionales centrada en Inteligencia Artificial (AI-centric).",
-  aboutP2:
-    "Diseñamos, desarrollamos e implementamos ecosistemas tecnológicos para impulsar la innovación, optimizar procesos empresariales y acelerar la adopción de nuevas tecnologías e Inteligencia artificial orientada a negocios.",
+type CSLocaleCopy = {
+  nav: {
+    home: string;
+    openMenu: string;
+    switchLang: string;
+    themeLight: string;
+    themeDark: string;
+  };
+  home: {
+    tagline: string;
+    aboutBadge: string;
+    aboutTitle: string;
+    aboutP1Before: string;
+    aboutP1Accent: string;
+    aboutP1After: string;
+    aboutP2: string;
+    aboutP3: string;
+  };
+  footer: { tagline: string };
+  sections: CSSection[];
 };
 
-export const csSections: CSSection[] = [
+const sectionsEs: CSSection[] = [
   {
     id: "capital",
     anchor: "corecapital",
@@ -170,3 +182,207 @@ export const csSections: CSSection[] = [
     ],
   },
 ];
+
+const sectionsEn: CSSection[] = [
+  {
+    id: "capital",
+    anchor: "corecapital",
+    navLabel: "CoreCapital",
+    core: "Core",
+    name: "Capital",
+    color: csBrand.products.capital,
+    badge: "AI-powered wealth management",
+    title1: "Your wealth,",
+    title2: "reimagined",
+    subtitle:
+      "CoreCapital is the first AI-native wealth management platform built for tech-savvy investors. Consolidate every asset, get institutional-grade analytics, and use conversational AI to grow your portfolio.",
+    highlights: [
+      {
+        title: "AI Portfolio Analyst",
+        description:
+          "Real-time performance insights, risk scoring, and strategic recommendations tailored to your profile.",
+      },
+      {
+        title: "Advanced analytics",
+        description:
+          "Track NAV, capital appreciation, and monthly income with a unified multi-asset view.",
+      },
+      {
+        title: "RWA tokenization",
+        description:
+          "Real estate, bonds, farmland, and more converted into tradable fractions with T+0 settlement and on-chain transparency.",
+      },
+      {
+        title: "Three AI engines",
+        description:
+          "Market pulse, algorithmic rebalancing, and conversational intelligence in one platform.",
+      },
+    ],
+    ctaLabel: "Go to CoreCapital",
+    ctaHref: "/#home",
+  },
+  {
+    id: "commerce",
+    anchor: "corecommerce",
+    navLabel: "CoreCommerce",
+    core: "Core",
+    name: "Commerce",
+    color: csBrand.products.commerce,
+    badge: "Digital commerce",
+    title1: "Smart",
+    title2: "web stores",
+    subtitle:
+      "Web store consulting and implementation: from commercial strategy to launch and day-to-day operation of a scalable digital sales channel.",
+    highlights: [
+      {
+        title: "Design & shopping experience",
+        description:
+          "Catalog architecture, checkout, and journeys built to convert and retain customers.",
+      },
+      {
+        title: "End-to-end implementation",
+        description:
+          "Payments, inventory, logistics, and marketing tools integrated into one flow.",
+      },
+      {
+        title: "Operations & growth",
+        description:
+          "Dashboards, automations, and continuous improvements to scale sales without operational friction.",
+      },
+      {
+        title: "Team enablement",
+        description:
+          "We train your organization to run the store autonomously with best practices.",
+      },
+    ],
+  },
+  {
+    id: "ads",
+    anchor: "coreads",
+    navLabel: "CoreADS",
+    core: "Core",
+    name: "ADS",
+    color: csBrand.products.ads,
+    badge: "AI content & advertising",
+    title1: "Avatars and content",
+    title2: "with AI",
+    subtitle:
+      "Consulting and implementation of avatars, content generation, and AI-driven scheduling to strengthen campaigns, brand, and digital presence.",
+    highlights: [
+      {
+        title: "Digital avatars",
+        description:
+          "Design and deployment of avatars for brand communication, support, and audiovisual content.",
+      },
+      {
+        title: "Content generation",
+        description:
+          "AI-assisted pipelines for copy, creatives, and multi-format assets aligned to your brand voice.",
+      },
+      {
+        title: "AI scheduling",
+        description:
+          "Automate calendars, creative variants, and publishing workflows to accelerate campaigns.",
+      },
+      {
+        title: "Measurement & learning",
+        description:
+          "Test-and-learn cycles to improve creative performance with real data.",
+      },
+    ],
+  },
+  {
+    id: "ai",
+    anchor: "coreia",
+    navLabel: "CoreIA",
+    core: "Core",
+    name: "IA",
+    color: csBrand.products.ai,
+    badge: "Business-oriented AI",
+    title1: "Artificial intelligence",
+    title2: "to operate better",
+    subtitle:
+      "Consulting for business- and operations-oriented AI: model usage, legal guidance, data protection, and transforming enterprise operations with artificial intelligence.",
+    highlights: [
+      {
+        title: "Strategy & models",
+        description:
+          "Select and implement the right models for each use case, with a focus on measurable business value.",
+      },
+      {
+        title: "Governance, legal & data",
+        description:
+          "Legal usage guidance, data protection, and compliance frameworks for responsible AI adoption.",
+      },
+      {
+        title: "Operational transformation",
+        description:
+          "Redesign business processes with AI where it drives efficiency, quality, and speed.",
+      },
+      {
+        title: "Organizational agents",
+        description:
+          "Deploy agents to automate tasks, workflows, and information flows inside the company.",
+      },
+    ],
+  },
+];
+
+export const csTranslations: Record<"es" | "en", CSLocaleCopy> = {
+  es: {
+    nav: {
+      home: "Inicio",
+      openMenu: "Abrir menú",
+      switchLang: "Switch to English",
+      themeLight: "Modo claro",
+      themeDark: "Modo oscuro",
+    },
+    home: {
+      tagline: "Ecosistemas de IA orientados al negocio",
+      aboutBadge: "Sobre nosotros",
+      aboutTitle: "Nuestro ADN",
+      aboutP1Before:
+        "CoreSolutions es una consultora de software y servicios profesionales centrada en la implementación y adopción de inteligencia artificial ",
+      aboutP1Accent: "(AI-centric)",
+      aboutP1After: ".",
+      aboutP2:
+        "Diseñamos, desarrollamos e implementamos ecosistemas tecnológicos para impulsar la innovación, optimizar procesos empresariales y acelerar la adopción de nuevas tecnologías orientadas a negocios.",
+      aboutP3:
+        "Nos encargamos de enfocar y dirigir la IA en tus procesos: el brief, la arquitectura de prompts y la elección de herramientas para maximizar resultado y controlar el costo operativo.",
+    },
+    footer: {
+      tagline: "Ecosistemas de IA orientados al negocio.",
+    },
+    sections: sectionsEs,
+  },
+  en: {
+    nav: {
+      home: "Home",
+      openMenu: "Open menu",
+      switchLang: "Cambiar a Español",
+      themeLight: "Light mode",
+      themeDark: "Dark mode",
+    },
+    home: {
+      tagline: "AI ecosystems built for business",
+      aboutBadge: "About us",
+      aboutTitle: "Our DNA",
+      aboutP1Before:
+        "CoreSolutions is a software and professional services consultancy focused on the implementation and adoption of artificial intelligence ",
+      aboutP1Accent: "(AI-centric)",
+      aboutP1After: ".",
+      aboutP2:
+        "We design, build, and implement technology ecosystems to drive innovation, optimize business processes, and accelerate the adoption of business-oriented technologies.",
+      aboutP3:
+        "We focus and direct AI in your processes: the brief, prompt architecture, and tool selection to maximize outcomes and control operating cost.",
+    },
+    footer: {
+      tagline: "AI ecosystems built for business.",
+    },
+    sections: sectionsEn,
+  },
+};
+
+/** @deprecated Prefer csTranslations[language] — kept for any stray imports */
+export const csHomeCopy = csTranslations.es.home;
+export const csSections = csTranslations.es.sections;

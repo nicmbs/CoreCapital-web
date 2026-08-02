@@ -1,11 +1,15 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ArrowRight } from "lucide-react";
+import { useTheme } from "../../../app/context/ThemeContext";
+import { csTheme } from "../brand";
 import type { CSSection } from "../content";
 
 export function CSSolutionSection({ section }: { section: CSSection }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { theme } = useTheme();
+  const surface = csTheme(theme);
 
   return (
     <section id={section.anchor} className="relative py-28 overflow-hidden">
@@ -43,15 +47,16 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.08 }}
-            className="text-white mb-3"
+            className="mb-3"
             style={{
               fontSize: "clamp(2rem, 4vw, 3rem)",
               fontWeight: 700,
               letterSpacing: "-0.02em",
               lineHeight: 1.15,
+              color: surface.fg,
             }}
           >
-            <span className="text-white">{section.core}</span>
+            <span style={{ color: surface.fg }}>{section.core}</span>
             <span style={{ color: section.color }}>{section.name}</span>
           </motion.h2>
 
@@ -59,11 +64,12 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.12 }}
-            className="text-white mb-4"
+            className="mb-4"
             style={{
               fontSize: "clamp(1.35rem, 2.8vw, 1.85rem)",
               fontWeight: 600,
               letterSpacing: "-0.02em",
+              color: surface.fg,
             }}
           >
             {section.title1}{" "}
@@ -77,7 +83,7 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
             style={{
               fontSize: "1.05rem",
               lineHeight: 1.7,
-              color: "rgba(255,255,255,0.55)",
+              color: surface.soft,
             }}
           >
             {section.subtitle}
@@ -91,13 +97,16 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: 0.15 + i * 0.06 }}
-              className="rounded-2xl border p-5 bg-[#0a0b0f]/70 backdrop-blur-sm"
-              style={{ borderColor: `${section.color}28` }}
+              className="rounded-2xl border p-5 backdrop-blur-sm"
+              style={{
+                borderColor: `${section.color}28`,
+                backgroundColor: surface.cardBg,
+              }}
             >
-              <h3 className="text-white font-semibold mb-2" style={{ fontSize: "1rem" }}>
+              <h3 className="font-semibold mb-2" style={{ fontSize: "1rem", color: surface.fg }}>
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: surface.soft }}>
                 {item.description}
               </p>
             </motion.div>
