@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { Mail, Send } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { PoweredByCoreSolutions } from "./PoweredByCoreSolutions";
 
 const CONTACT_EMAIL = "contacto@corecapitalpy.com";
 
@@ -163,6 +164,15 @@ export function Contact() {
             </motion.button>
           </div>
         </motion.form>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="flex justify-center mt-8"
+        >
+          <PoweredByCoreSolutions />
+        </motion.div>
       </div>
     </section>
   );

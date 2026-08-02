@@ -5,6 +5,7 @@ import analyticsImage from "figma:asset/ac77aa8ddb3da79c77739a2229387f7229a002b1
 import logoImage from "figma:asset/587d4841ce1110b4d856258b2a922555fd7a1195.png";
 import { useLanguage } from "../context/LanguageContext";
 import { translations } from "../translations";
+import { PoweredByCoreSolutions } from "./PoweredByCoreSolutions";
 
 const stats = [
   { value: "$16T", label: "Projected RWA Market (2030)" },
@@ -78,15 +79,18 @@ export function Hero() {
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
           {/* Left content */}
           <div className="flex-1 text-center lg:text-left">
-            {/* Badge */}
+            {/* Badges */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-[#39FF71]/10 border border-[#39FF71]/20 rounded-full px-4 py-1.5 mb-8"
+              className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#39FF71] animate-pulse" />
-              <span className="text-[#39FF71] text-sm font-medium">{t.badge}</span>
+              <div className="inline-flex items-center gap-2 bg-[#39FF71]/10 border border-[#39FF71]/20 rounded-full px-4 py-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#39FF71] animate-pulse" />
+                <span className="text-[#39FF71] text-sm font-medium">{t.badge}</span>
+              </div>
+              <PoweredByCoreSolutions />
             </motion.div>
 
             {/* Headline */}

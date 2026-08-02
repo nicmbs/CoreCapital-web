@@ -1,40 +1,20 @@
-import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
-import { Features } from "./components/Features";
-import { AnalyticsDashboard } from "./components/AnalyticsDashboard";
-import { AIEngines } from "./components/AIEngines";
-import { Tokenization } from "./components/Tokenization";
-import { Pricing } from "./components/Pricing";
-import { Contact } from "./components/Contact";
-import { CTA } from "./components/CTA";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { LanguageProvider } from "./context/LanguageContext";
-import { ThemeProvider, useTheme } from "./context/ThemeContext";
-
-function AppShell() {
-  const { theme } = useTheme();
-  return (
-    <div
-      className={`cc-root ${theme === "light" ? "theme-light" : "theme-dark"}`}
-      style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
-    >
-      <Navbar />
-      <Hero />
-      <Features />
-      <AnalyticsDashboard />
-      <AIEngines />
-      <Tokenization />
-      <Pricing />
-      <Contact />
-      <CTA />
-    </div>
-  );
-}
+import { ThemeProvider } from "./context/ThemeContext";
+import CoreCapitalPage from "../sites/corecapital/CoreCapitalPage";
+import CoreSolutionsPage from "../sites/coresolutions/CoreSolutionsPage";
 
 export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <AppShell />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<CoreCapitalPage />} />
+            <Route path="/coresolutions" element={<CoreSolutionsPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
       </LanguageProvider>
     </ThemeProvider>
   );
