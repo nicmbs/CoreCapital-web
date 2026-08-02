@@ -32,7 +32,7 @@ const ORB_PRESENTATION: "float" | "sphere" = "float";
 /** Zoom into the centered figure — crops letterbox black from 16:9 stock clips. */
 const VIDEO_CROP_SCALE_SPHERE = 1.45;
 /** Crop transparent margins + generator watermark (sparkle, bottom-right). */
-const VIDEO_CROP_SCALE_FLOAT = 1.32;
+const VIDEO_CROP_SCALE_FLOAT = 1.42;
 
 /** Spherical mask (sphere mode only). */
 const ORB_CLIP = "circle(48% at 50% 50%)";
@@ -81,12 +81,13 @@ const AURA_BLOBS: AuraBlobConfig[] = [
     },
   },
   {
+    // top-right
     invert: true,
-    w: "38%",
-    h: "48%",
-    top: "24%",
-    left: "46%",
-    blur: 15,
+    w: "46%",
+    h: "54%",
+    top: "12%",
+    left: "48%",
+    blur: 16,
     dur: 14,
     delay: 1.4,
     pull: 0.85,
@@ -359,7 +360,7 @@ export function CSAiOrb() {
 
   return (
     <div
-      className="relative w-full max-w-[440px] lg:max-w-[480px] mx-auto overflow-visible bg-transparent touch-none"
+      className="relative w-full max-w-[480px] lg:max-w-[520px] mx-auto overflow-visible bg-transparent touch-none"
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
     >
@@ -441,7 +442,7 @@ export function CSAiOrb() {
         ) : (
           /* Float: free figure in the middle — no circular portal */
           <motion.div
-            className="absolute inset-[6%] bg-transparent overflow-hidden pointer-events-none"
+            className="absolute inset-[0%] bg-transparent overflow-hidden pointer-events-none"
             animate={
               reduceMotion
                 ? undefined

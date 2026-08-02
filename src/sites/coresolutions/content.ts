@@ -136,10 +136,10 @@ export const csSections: CSSection[] = [
   },
   {
     id: "ai",
-    anchor: "coreai",
-    navLabel: "CoreAI",
+    anchor: "coreia",
+    navLabel: "CoreIA",
     core: "Core",
-    name: "AI",
+    name: "IA",
     color: csBrand.products.ai,
     badge: "IA orientada a negocios",
     title1: "Inteligencia artificial",
