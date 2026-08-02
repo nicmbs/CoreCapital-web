@@ -73,7 +73,17 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
             }}
           >
             {section.title1}{" "}
-            <span style={{ color: section.color }}>{section.title2}</span>
+            <span
+              style={{
+                color: section.color,
+                fontWeight: 800,
+                fontStyle: "italic",
+                letterSpacing: "-0.03em",
+                textShadow: `0 0 28px ${section.color}66`,
+              }}
+            >
+              {section.title2}
+            </span>
           </motion.p>
 
           <motion.p

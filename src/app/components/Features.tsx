@@ -47,23 +47,26 @@ function FeatureCard({ feature, index }: { feature: typeof featureIcons[0]; inde
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(ellipse at top left, ${feature.color}08 0%, transparent 60%)`,
+          background: `radial-gradient(ellipse at top left, color-mix(in srgb, ${feature.color} 8%, transparent) 0%, transparent 60%)`,
         }}
       />
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-4">
           <div
             className="w-11 h-11 rounded-xl flex items-center justify-center"
-            style={{ backgroundColor: `${feature.color}15` }}
+            style={{
+              backgroundColor: `color-mix(in srgb, ${feature.color} 14%, transparent)`,
+            }}
           >
             <Icon size={20} style={{ color: feature.color }} />
           </div>
           <span
-            className="text-xs font-medium px-2.5 py-1 rounded-full"
+            className="text-xs font-medium px-2.5 py-1 rounded-full inline-flex items-center shrink-0"
             style={{
               color: feature.color,
-              backgroundColor: `${feature.color}15`,
-              border: `1px solid ${feature.color}25`,
+              // color-mix works with CSS vars; appending alpha to var(--x) does not
+              backgroundColor: `color-mix(in srgb, ${feature.color} 16%, transparent)`,
+              border: `1px solid color-mix(in srgb, ${feature.color} 32%, transparent)`,
             }}
           >
             {t.badge}

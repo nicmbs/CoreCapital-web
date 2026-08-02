@@ -40,7 +40,8 @@ export const translations = {
       badge: "Everything You Need",
       title1: "Institutional tools,",
       title2: "democratized",
-      subtitle: "CoreCapital brings the power of a family office to individual investors — without the fees, gatekeepers, or complexity.",
+      subtitle:
+        "CoreCapital brings the power of a family office to individual investors, without the fees, gatekeepers, or complexity.",
       cards: {
         aiAnalyst: {
           title: "AI Portfolio Analyst",
@@ -68,13 +69,15 @@ export const translations = {
           badge: "Smart Alerts",
         },
         rebalancing: {
-          title: "Auto Rebalancing",
-          description: "Keep your portfolio aligned with your goals through AI-driven rebalancing suggestions that optimize for return, risk, and liquidity simultaneously.",
+          title: "Portfolio Balance",
+          description:
+            "Keep your portfolio aligned with your goals through AI-driven suggestions that help you rotate across liquidity, risk, and market exposure.",
           badge: "Automated",
         },
         multiAsset: {
-          title: "Multi-Asset Classes",
-          description: "Manage crypto bots, real estate, bonds, mutual funds, and bank CDAs — all in one unified platform with cross-asset performance benchmarking.",
+          title: "Multiple Asset Types",
+          description:
+            "Manage crypto bots, real estate, bonds, mutual funds, and bank CDAs, all in one unified platform with cross-asset performance benchmarking.",
           badge: "Unified",
         },
         security: {
@@ -85,7 +88,8 @@ export const translations = {
       },
       showcase: {
         title: "One app. Every angle of your wealth.",
-        subtitle: "From portfolio management to AI-powered projections — all in a unified, beautifully designed interface.",
+        subtitle:
+          "From tracking your portfolio to evaluating projections and interacting with agents.",
         screens: {
           portfolio: {
             title: "Portfolio Overview",
@@ -102,16 +106,18 @@ export const translations = {
         },
       },
       ecosystem: {
-        title: "The CoreCapital Ecosystem",
+        title: "CoreCapital Ecosystem",
         subtitle: "Seamlessly manage both traditional and tokenized assets in one unified platform.",
         traditional: {
-          title: "Traditional Financial Assets",
-          description: "Real estate, bonds, mutual funds, bank CDAs, and more — all consolidated in one dashboard with institutional-grade analytics.",
+          title: "Financial and Traditional Assets",
+          description:
+            "Real estate, bonds, mutual funds, bank CDAs, and more, all consolidated in one dashboard with institutional-grade analytics.",
           features: ["Real Estate", "Corporate Bonds", "Bank CDAs", "Mutual Funds", "Commodities", "Private Equity"],
         },
         tokenized: {
           title: "Tokenized Real-World Assets",
-          description: "Real estate, corporate bonds, farmland, livestock, and trade receivables brought on-chain. Own fractional stakes, earn periodic yield, and settle instantly with full on-chain transparency.",
+          description:
+            "Real estate, corporate bonds, farmland, livestock, and trade receivables brought on-chain. Own fractional stakes, earn periodic yield, and settle instantly with full on-chain transparency.",
           features: ["Real Estate", "Corporate Bonds", "Farmland & Ranches", "Trade Receivables", "Fractional Ownership", "On-Chain Yield"],
         },
       },
@@ -120,8 +126,9 @@ export const translations = {
     analytics: {
       badge: "Live Portfolio Analytics",
       title1: "Your wealth,",
-      title2: "at a glance",
-      subtitle: "Real-time capital tracking, income projections, and asset-class breakdowns — all in one unified dashboard.",
+      title2: "in one place",
+      subtitle:
+        "Review your metrics, returns, and projections to reach your financial goals, all in a unified dashboard.",
       stats: {
         totalCapital: {
           label: "Total Capital",
@@ -160,11 +167,13 @@ export const translations = {
       badge: "AI-Powered Capabilities",
       title1: "Three AI engines,",
       title2: "one platform",
-      subtitle: "CoreCapital leverages cutting-edge AI to deliver real-time market insights, automated portfolio optimization, and conversational financial intelligence.",
+      subtitle:
+        "CoreCapital combines cutting-edge AI to provide real-time market insights, automated portfolio evaluation, and financial intelligence aligned to the investor's goals.",
       engines: {
         marketPulse: {
-          title: "Smart Market Pulse",
-          description: "Real-time market sentiment analysis powered by GPT-4. Get instant insights on macro trends, sector rotations, and emerging opportunities tailored to your portfolio composition.",
+          title: "Market Reading",
+          description:
+            "Real-time analysis of the market and your portfolio, powered by a search engine that evaluates news and financial reports. Get instant insights on macro trends, sector rotations, and emerging opportunities tailored to your portfolio composition.",
           badge: "Real-Time",
           features: [
             "Macro-economic sentiment tracking",
@@ -174,8 +183,9 @@ export const translations = {
           ],
         },
         rebalancing: {
-          title: "Algorithmic Rebalancing",
-          description: "AI-driven portfolio optimization that continuously monitors your asset allocation and suggests rebalancing actions to maintain your target risk-return profile.",
+          title: "Portfolio Balance",
+          description:
+            "AI-driven portfolio optimization that continuously monitors your asset allocation and helps you rotate across liquidity, risk, and market exposure to stay aligned with your goals.",
           badge: "Automated",
           features: [
             "Target allocation monitoring",
@@ -186,7 +196,8 @@ export const translations = {
         },
         conversational: {
           title: "Conversational Intelligence",
-          description: "Chat with your portfolio. Ask complex financial questions and get instant, data-driven answers from an AI that understands your complete wealth picture.",
+          description:
+            "Talk directly with your portfolio. Ask complex financial questions and get instant, data-driven answers to understand your full wealth picture and make better decisions.",
           badge: "Conversational",
           features: [
             "Natural language queries",
@@ -201,8 +212,9 @@ export const translations = {
     tokenization: {
       badge: "Real-World Asset Tokenization",
       title1: "Real assets,",
-      title2: "made liquid",
-      subtitle: "CoreCapital turns real-world assets — property, bonds, farmland and more — into fractional, tradable tokens. Institutional-grade access, opened to every investor.",
+      title2: "as digital investments",
+      subtitle:
+        "CoreCapital turns real-world assets such as property, commodities, and businesses into fractional, tradable tokens across different investment formats. Put your capital to work as if you owned the full asset, and earn the returns of large-scale investments scaled to the fraction you hold.",
       stepsLabel: "How it works",
       steps: [
         {
@@ -215,7 +227,7 @@ export const translations = {
         },
         {
           title: "Own a fraction",
-          desc: "Buy fractional stakes and settle T+0 — no clearing delays, no gatekeepers, full transparency.",
+          desc: "Buy fractional stakes and settle T+0: no clearing delays, no gatekeepers, full transparency.",
         },
         {
           title: "Earn & redeem",
@@ -230,14 +242,14 @@ export const translations = {
         "Livestock",
         "Trade Receivables",
         "Machinery",
-        "Agri-Commodities",
+        "Agricultural commodities",
         "Infrastructure & Energy",
       ],
       benefitsLabel: "Why tokenize with CoreCapital",
       benefits: [
         {
           title: "Fractional ownership",
-          desc: "Own a slice of a multi-million-dollar property or a corporate bond — diversify across assets you couldn't buy whole.",
+          desc: "Own a slice of a multi-million-dollar property or a corporate bond, and diversify across assets you couldn't buy whole.",
         },
         {
           title: "Instant T+0 settlement",
@@ -245,7 +257,7 @@ export const translations = {
         },
         {
           title: "Periodic yield",
-          desc: "Fixed-income assets pay interest, rent or coupons (TAN) auto-credited to your wallet — monthly, quarterly or annually.",
+          desc: "Fixed-income assets pay interest, rent or coupons (TAN) auto-credited to your wallet, monthly, quarterly or annually.",
         },
         {
           title: "Built-in liquidity",
@@ -253,7 +265,7 @@ export const translations = {
         },
         {
           title: "Redemption at maturity",
-          desc: "At maturity, tokens are redeemed at par plus accrued yield — or repurchased by the issuer.",
+          desc: "At maturity, tokens are redeemed at par plus accrued yield, or repurchased by the issuer.",
         },
         {
           title: "Audited, real backing",
@@ -272,59 +284,59 @@ export const translations = {
     pricing: {
       badge: "Flexible Pricing",
       title1: "Choose your",
-      title2: "wealth journey",
-      subtitle: "Start free, upgrade when you need advanced AI capabilities. All plans include bank-grade security and real-time analytics.",
+      title2: "right-sized plan",
+      subtitle: "Pick the plan that fits how you manage and grow your wealth.",
       tiers: {
         explorer: {
           name: "Explorer",
           description: "Start managing your wealth with core portfolio tools.",
           features: [
             "Manual asset consolidation",
-            "Basic portfolio analytics",
-            "Monthly performance reports",
-            "Email support",
+            "Basic portfolio charts",
+            "Track up to 5 assets",
+            "Monthly snapshot reports",
             "Mobile app access",
           ],
         },
         essential: {
           name: "Essential",
-          description: "Unlock advanced analytics and automated workflows.",
+          description: "Stay on top of fixed-income events and cash flow.",
           features: [
             "Everything in Explorer",
-            "Auto asset sync",
-            "Advanced analytics dashboard",
-            "Risk scoring & alerts",
-            "Priority email support",
-            "API access",
+            "Coupon and maturity alerts",
+            "Cash flow timeline view",
+            "Unlimited assets",
+            "Email and push notifications",
           ],
         },
         insightAI: {
-          name: "Insight AI",
-          description: "Get AI-powered market insights and projections.",
+          name: "Insight",
+          description: "Your AI curator delivers personalized weekly market intelligence.",
           features: [
             "Everything in Essential",
-            "Smart Market Pulse AI",
-            "Growth projections (30 years)",
-            "Flash Insights",
-            "Chat support",
-            "Custom reports",
+            "AI Analyst agent",
+            "Weekly curated news digest",
+            "Insights tailored to your portfolio",
+            "Macro trend summaries",
           ],
         },
         strategistAI: {
-          name: "Strategist AI",
-          description: "Full AI suite with conversational intelligence.",
+          name: "Strategist",
+          description: "Full AI consultant access for opportunities, risk analysis, and strategy.",
           features: [
-            "Everything in Insight AI",
-            "Conversational AI Analyst",
-            "Algorithmic rebalancing",
-            "Tax optimization",
-            "Dedicated account manager",
-            "White-glove onboarding",
+            "Everything in Insight",
+            "AI Consultant chat (unlimited)",
+            "Investment opportunity search",
+            "Risk scenario analysis",
+            "Priority support",
           ],
         },
       },
       cta: "Get Started",
       month: "month",
+      customPlan:
+        "Looking for a tailored solution for you or your company? Let's talk about a custom plan. Write to us at",
+      customPlanEmail: "contacto@corecapitalpy.com",
     },
     // Social Proof
     socialProof: {
@@ -385,9 +397,9 @@ export const translations = {
     // Hero
     hero: {
       badge: "Gestión de Patrimonio con IA",
-      title1: "Tu patrimonio,",
-      title2: "reimaginado",
-      subtitle: "CoreCapital es la primera plataforma de gestión de patrimonio nativa de IA diseñada para inversores tech-savvy. Consolida todos tus activos, obtén análisis de nivel institucional y aprovecha la IA conversacional para hacer crecer tu portafolio.",
+      title1: "Tu portafolio,",
+      title2: "inteligente",
+      subtitle: "CoreCapital es la primera plataforma de evaluación de patrimonio con IA, diseñada para inversores que buscan claridad y herramientas modernas. Consolida todos tus activos, obtén análisis de nivel institucional y usa la IA para evaluar oportunidades y hacer crecer tu portafolio.",
       cta: "Accede al pre-lanzamiento",
       contactCta: "Contactarse",
       tokenizationCta: "Explorar tokenización",
@@ -410,9 +422,10 @@ export const translations = {
     // Features
     features: {
       badge: "Todo lo que Necesitas",
-      title1: "Herramientas institucionales,",
-      title2: "democratizadas",
-      subtitle: "CoreCapital trae el poder de una oficina familiar a inversores individuales — sin las tarifas, intermediarios o complejidad.",
+      title1: "Herramientas de experto,",
+      title2: "a tu alcance",
+      subtitle:
+        "CoreCapital te permite evaluar tus objetivos financieros con criterio de experto y con tus propios agentes financieros, sin tarifas elevadas, intermediarios ni fricción constante.",
       cards: {
         aiAnalyst: {
           title: "Analista de Cartera IA",
@@ -440,13 +453,15 @@ export const translations = {
           badge: "Alertas Inteligentes",
         },
         rebalancing: {
-          title: "Rebalanceo Automático",
-          description: "Mantén tu cartera alineada con tus objetivos a través de sugerencias de rebalanceo impulsadas por IA que optimizan rendimiento, riesgo y liquidez simultáneamente.",
+          title: "Balance de Cartera",
+          description:
+            "Mantén tu cartera alineada con tus objetivos con sugerencias impulsadas por IA que te ayudan a rotar entre liquidez, riesgo y exposición a mercados.",
           badge: "Automatizado",
         },
         multiAsset: {
-          title: "Múltiples Clases de Activos",
-          description: "Gestiona bots de crypto, bienes raíces, bonos, fondos mutuos y CDAs bancarios — todo en una plataforma unificada con benchmarking de rendimiento entre activos.",
+          title: "Múltiples Tipos de Activos",
+          description:
+            "Gestiona bots de crypto, bienes raíces, bonos, fondos mutuos y CDAs bancarios, todo en una plataforma unificada con benchmarking de rendimiento entre activos.",
           badge: "Unificado",
         },
         security: {
@@ -457,7 +472,8 @@ export const translations = {
       },
       showcase: {
         title: "Una app. Todos los ángulos de tu patrimonio.",
-        subtitle: "Desde gestión de cartera hasta proyecciones con IA — todo en una interfaz unificada y bellamente diseñada.",
+        subtitle:
+          "Desde el seguimiento de tu portafolio, la evaluación de proyecciones y la interacción con agentes.",
         screens: {
           portfolio: {
             title: "Vista de Cartera",
@@ -474,16 +490,18 @@ export const translations = {
         },
       },
       ecosystem: {
-        title: "El Ecosistema CoreCapital",
+        title: "Ecosistema CoreCapital",
         subtitle: "Gestiona sin problemas tanto activos tradicionales como tokenizados en una plataforma unificada.",
         traditional: {
-          title: "Activos Financieros Tradicionales",
-          description: "Bienes raíces, bonos, fondos mutuos, CDAs bancarios y más — todo consolidado en un tablero con análisis de nivel institucional.",
+          title: "Activos Financieros y Tradicionales",
+          description:
+            "Bienes raíces, bonos, fondos mutuos, CDAs bancarios y más, todo consolidado en un tablero con análisis de nivel institucional.",
           features: ["Bienes Raíces", "Bonos Corporativos", "CDAs Bancarios", "Fondos Mutuos", "Commodities", "Private Equity"],
         },
         tokenized: {
           title: "Activos del Mundo Real Tokenizados",
-          description: "Inmuebles, bonos corporativos, campos, ganado y facturas cambiarias llevados on-chain. Posee fracciones, gana rendimientos periódicos y liquida al instante con transparencia on-chain total.",
+          description:
+            "Inmuebles, bonos corporativos, campos, ganado y facturas cambiarias llevados on-chain. Posee fracciones, gana rendimientos periódicos y liquida al instante con transparencia on-chain total.",
           features: ["Inmuebles", "Bonos Corporativos", "Campos y Estancias", "Facturas Cambiarias", "Propiedad Fraccionada", "Rendimiento On-Chain"],
         },
       },
@@ -492,8 +510,9 @@ export const translations = {
     analytics: {
       badge: "Analíticas de Cartera en Vivo",
       title1: "Tu patrimonio,",
-      title2: "de un vistazo",
-      subtitle: "Seguimiento de capital en tiempo real, proyecciones de ingresos y desglose por clase de activo — todo en un tablero unificado.",
+      title2: "en un solo lugar",
+      subtitle:
+        "Revisa tus métricas, rendimientos y proyecciones para alcanzar tus objetivos financieros, todo en un tablero unificado.",
       stats: {
         totalCapital: {
           label: "Capital Total",
@@ -532,11 +551,13 @@ export const translations = {
       badge: "Capacidades con IA",
       title1: "Tres motores de IA,",
       title2: "una plataforma",
-      subtitle: "CoreCapital aprovecha IA de vanguardia para entregar información de mercado en tiempo real, optimización automática de cartera e inteligencia financiera conversacional.",
+      subtitle:
+        "CoreCapital combina IA de vanguardia para proporcionar información de mercado en tiempo real, evaluación automática de cartera e inteligencia financiera según los objetivos del inversionista.",
       engines: {
         marketPulse: {
-          title: "Pulso de Mercado Inteligente",
-          description: "Análisis de sentimiento de mercado en tiempo real impulsado por GPT-4. Obtén información instantánea sobre tendencias macro, rotaciones de sectores y oportunidades emergentes adaptadas a la composición de tu cartera.",
+          title: "Lectura de Mercado",
+          description:
+            "Análisis del mercado y de tu portafolio en tiempo real, impulsado por un motor de búsqueda que evalúa noticias e informes financieros. Obtén información instantánea sobre tendencias macro, rotaciones de sectores y oportunidades emergentes adaptadas a la composición de tu cartera.",
           badge: "Tiempo Real",
           features: [
             "Seguimiento de sentimiento macroeconómico",
@@ -546,8 +567,9 @@ export const translations = {
           ],
         },
         rebalancing: {
-          title: "Rebalanceo Algorítmico",
-          description: "Optimización de cartera impulsada por IA que monitorea continuamente tu asignación de activos y sugiere acciones de rebalanceo para mantener tu perfil de riesgo-retorno objetivo.",
+          title: "Balance de Cartera",
+          description:
+            "Optimización de cartera impulsada por IA que monitorea continuamente tu asignación de activos y te ayuda a rotar entre liquidez, riesgo y exposición a mercados para mantener el perfil que buscas.",
           badge: "Automatizado",
           features: [
             "Monitoreo de asignación objetivo",
@@ -558,7 +580,8 @@ export const translations = {
         },
         conversational: {
           title: "Inteligencia Conversacional",
-          description: "Chatea con tu cartera. Haz preguntas financieras complejas y obtén respuestas instantáneas basadas en datos de una IA que entiende tu panorama completo de patrimonio.",
+          description:
+            "Habla directamente con tu cartera. Haz preguntas financieras complejas y obtén respuestas instantáneas basadas en datos para entender tu panorama de patrimonio y tomar mejores decisiones.",
           badge: "Conversacional",
           features: [
             "Consultas en lenguaje natural",
@@ -573,8 +596,9 @@ export const translations = {
     tokenization: {
       badge: "Tokenización de Activos del Mundo Real",
       title1: "Activos reales,",
-      title2: "hechos líquidos",
-      subtitle: "CoreCapital convierte activos del mundo real — inmuebles, bonos, campos y más — en tokens fraccionados y negociables. Acceso de nivel institucional, abierto a todo inversor.",
+      title2: "en inversiones digitales",
+      subtitle:
+        "CoreCapital convierte activos del mundo real como inmuebles, materias primas y negocios en tokens fraccionados y negociables, con distintos formatos de inversión. Haz rendir tu capital como si fueras propietario de un inmueble y obtén los rendimientos de inversiones de gran capital, acotados a la fracción en la que participas.",
       stepsLabel: "Cómo funciona",
       steps: [
         {
@@ -587,7 +611,7 @@ export const translations = {
         },
         {
           title: "Posee una fracción",
-          desc: "Compra participaciones fraccionadas y liquida en T+0 — sin demoras de compensación, sin intermediarios, con total transparencia.",
+          desc: "Compra participaciones fraccionadas y liquida en T+0: sin demoras de compensación, sin intermediarios, con total transparencia.",
         },
         {
           title: "Gana y rescata",
@@ -602,14 +626,14 @@ export const translations = {
         "Ganado",
         "Facturas Cambiarias",
         "Maquinaria",
-        "Commodities Agrícolas",
+        "Materias primas agrícolas",
         "Infraestructura y Energía",
       ],
       benefitsLabel: "Por qué tokenizar con CoreCapital",
       benefits: [
         {
           title: "Propiedad fraccionada",
-          desc: "Posee una parte de un inmueble millonario o un bono corporativo — diversifica en activos que no podrías comprar enteros.",
+          desc: "Posee una parte de un inmueble millonario o un bono corporativo, y diversifica en activos que no podrías comprar enteros.",
         },
         {
           title: "Liquidación instantánea T+0",
@@ -617,7 +641,7 @@ export const translations = {
         },
         {
           title: "Rendimiento periódico",
-          desc: "Los activos de renta fija pagan intereses, renta o cupones (TAN) acreditados automáticamente a tu wallet — mensual, trimestral o anual.",
+          desc: "Los activos de renta fija pagan intereses, renta o cupones (TAN) acreditados automáticamente a tu wallet, mensual, trimestral o anual.",
         },
         {
           title: "Liquidez incorporada",
@@ -625,7 +649,7 @@ export const translations = {
         },
         {
           title: "Rescate al vencimiento",
-          desc: "Al vencimiento, los tokens se rescatan a la par más el rendimiento acumulado — o los recompra el emisor.",
+          desc: "Al vencimiento, los tokens se rescatan a la par más el rendimiento acumulado, o los recompra el emisor.",
         },
         {
           title: "Respaldo real y auditado",
@@ -644,59 +668,59 @@ export const translations = {
     pricing: {
       badge: "Precios Flexibles",
       title1: "Elige tu",
-      title2: "viaje de patrimonio",
-      subtitle: "Comienza gratis, actualiza cuando necesites capacidades avanzadas de IA. Todos los planes incluyen seguridad de nivel bancario y analíticas en tiempo real.",
+      title2: "plan a la medida",
+      subtitle: "Elige el plan que se ajuste a cómo gestionas y haces crecer tu patrimonio.",
       tiers: {
         explorer: {
-          name: "Explorador",
-          description: "Comienza a gestionar tu patrimonio con herramientas básicas de cartera.",
+          name: "Explorer",
+          description: "Empieza a gestionar tu patrimonio con herramientas básicas de cartera.",
           features: [
             "Consolidación manual de activos",
-            "Analíticas básicas de cartera",
-            "Reportes mensuales de rendimiento",
-            "Soporte por email",
+            "Gráficos de cartera básicos",
+            "Hasta 5 activos seguidos",
+            "Reportes de snapshots mensuales",
             "Acceso a app móvil",
           ],
         },
         essential: {
-          name: "Esencial",
-          description: "Desbloquea analíticas avanzadas y flujos de trabajo automatizados.",
+          name: "Essential",
+          description: "Mantente al tanto de tus eventos de renta fija y flujo de caja.",
           features: [
-            "Todo en Explorador",
-            "Sincronización automática de activos",
-            "Tablero de analíticas avanzadas",
-            "Puntuación de riesgo y alertas",
-            "Soporte prioritario por email",
-            "Acceso API",
+            "Todo lo de Explorer",
+            "Alertas de cupones y vencimientos",
+            "Vista de timeline de flujo de caja",
+            "Activos ilimitados",
+            "Notificaciones por email y push",
           ],
         },
         insightAI: {
-          name: "Insight AI",
-          description: "Obtén información de mercado y proyecciones impulsadas por IA.",
+          name: "Insight",
+          description: "Tu curador IA entrega inteligencia de mercado semanal personalizada.",
           features: [
-            "Todo en Esencial",
-            "IA Pulso de Mercado Inteligente",
-            "Proyecciones de crecimiento (30 años)",
-            "Flash Insights",
-            "Soporte por chat",
-            "Reportes personalizados",
+            "Todo lo de Essential",
+            "Agente Analista IA",
+            "Resumen semanal de noticias curadas",
+            "Insights adaptados a tu cartera",
+            "Resúmenes de tendencias macro",
           ],
         },
         strategistAI: {
-          name: "Estratega AI",
-          description: "Suite completa de IA con inteligencia conversacional.",
+          name: "Strategist",
+          description: "Acceso completo a consultor IA para oportunidades, análisis de riesgo y estrategia.",
           features: [
-            "Todo en Insight AI",
-            "Analista IA Conversacional",
-            "Rebalanceo algorítmico",
-            "Optimización fiscal",
-            "Gerente de cuenta dedicado",
-            "Onboarding personalizado",
+            "Todo lo de Insight",
+            "Chat con Consultor IA (ilimitado)",
+            "Búsqueda de oportunidades de inversión",
+            "Análisis de escenarios de riesgo",
+            "Soporte prioritario",
           ],
         },
       },
       cta: "Comenzar",
       month: "mes",
+      customPlan:
+        "¿Buscas una solución a medida para ti o tu empresa? Conversemos sobre un plan personalizado. Escríbenos a",
+      customPlanEmail: "contacto@corecapitalpy.com",
     },
     // Social Proof
     socialProof: {
@@ -704,7 +728,7 @@ export const translations = {
       title1: "Únete a la",
       title2: "nueva generación",
       title3: "de constructores de patrimonio",
-      subtitle: "Inversores tech-savvy en todo el mundo confían en CoreCapital para gestionar sus carteras multi-activo.",
+      subtitle: "Inversores tech-savvy en todo el mundo confían en CoreCapital para gestionar sus carteras de múltiples activos.",
     },
     // CTA / Footer
     cta: {

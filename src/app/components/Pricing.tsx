@@ -7,8 +7,8 @@ import { translations } from "../translations";
 const tierIcons = [
   { id: "explorer", icon: BarChart2, color: "var(--cc-text-strong)", bgColor: "#ffffff08", borderColor: "#ffffff12" },
   { id: "essential", icon: Zap, color: "var(--cc-accent-cyan)", bgColor: "#00d4ff08", borderColor: "#00d4ff20" },
-  { id: "insightAI", icon: Sparkles, color: "var(--cc-accent-green)", bgColor: "#39FF7112", borderColor: "#39FF7130", popular: true },
-  { id: "strategistAI", icon: MessageSquare, color: "#a78bfa", bgColor: "#a78bfa08", borderColor: "#a78bfa25" },
+  { id: "insightAI", icon: Sparkles, color: "var(--cc-accent-green)", bgColor: "#39FF7112", borderColor: "#39FF7130", popular: true, aiBadge: true },
+  { id: "strategistAI", icon: MessageSquare, color: "#a78bfa", bgColor: "#a78bfa08", borderColor: "#a78bfa25", aiBadge: true },
 ];
 
 const tierPrices = [0, 7, 15, 25];
@@ -101,7 +101,21 @@ export function Pricing() {
                   >
                     <Icon size={22} style={{ color: tier.color }} />
                   </div>
-                  <h3 className="text-white text-xl font-bold mb-2">{tierData.name}</h3>
+                  <div className="flex items-center gap-2 flex-wrap mb-2">
+                    <h3 className="text-white text-xl font-bold">{tierData.name}</h3>
+                    {tier.aiBadge && (
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded border"
+                        style={{
+                          color: tier.color,
+                          borderColor: tier.borderColor,
+                          backgroundColor: tier.bgColor,
+                        }}
+                      >
+                        AI
+                      </span>
+                    )}
+                  </div>
                   <p className="text-white/45 text-sm mb-5 min-h-[40px]">{tierData.description}</p>
                   <div className="mb-6">
                     <span className="text-white text-4xl font-bold">${price}</span>
@@ -142,6 +156,23 @@ export function Pricing() {
             );
           })}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="text-center text-white/50 mt-12 max-w-2xl mx-auto"
+          style={{ fontSize: "1.2rem", lineHeight: 1.7 }}
+        >
+          {t.customPlan}{" "}
+          <a
+            href={`mailto:${t.customPlanEmail}`}
+            className="text-[#39FF71] hover:text-[#39FF71]/85 transition-colors underline underline-offset-2"
+          >
+            {t.customPlanEmail}
+          </a>
+        </motion.p>
       </div>
     </section>
   );

@@ -47,10 +47,10 @@ const sectionsEs: CSSection[] = [
     name: "Capital",
     color: csBrand.products.capital,
     badge: "Gestión de Patrimonio con IA",
-    title1: "Tu patrimonio,",
-    title2: "reimaginado",
+    title1: "Tu portafolio,",
+    title2: "inteligente",
     subtitle:
-      "CoreCapital es la primera plataforma de gestión de patrimonio nativa de IA diseñada para inversores tech-savvy. Consolida todos tus activos, obtén análisis de nivel institucional y aprovecha la IA conversacional para hacer crecer tu portafolio.",
+      "CoreCapital es la primera plataforma de evaluación de patrimonio con IA, diseñada para inversores que buscan claridad y herramientas modernas. Consolida todos tus activos, obtén análisis de nivel institucional y usa la IA para evaluar oportunidades y hacer crecer tu portafolio.",
     highlights: [
       {
         title: "Analista de Cartera IA",
