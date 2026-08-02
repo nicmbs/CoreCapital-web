@@ -2,12 +2,21 @@ import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Check, Sparkles, MessageSquare, BarChart2, Zap } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeContext";
 import { translations } from "../translations";
 
 const tierIcons = [
   { id: "explorer", icon: BarChart2, color: "var(--cc-text-strong)", bgColor: "#ffffff08", borderColor: "#ffffff12" },
   { id: "essential", icon: Zap, color: "var(--cc-accent-cyan)", bgColor: "#00d4ff08", borderColor: "#00d4ff20" },
-  { id: "insightAI", icon: Sparkles, color: "var(--cc-accent-green)", bgColor: "#39FF7112", borderColor: "#39FF7130", popular: true, aiBadge: true },
+  {
+    id: "insightAI",
+    icon: Sparkles,
+    color: "var(--cc-accent-green)",
+    bgColor: "color-mix(in srgb, var(--cc-accent-green) 7%, transparent)",
+    borderColor: "color-mix(in srgb, var(--cc-accent-green) 19%, transparent)",
+    popular: true,
+    aiBadge: true,
+  },
   { id: "strategistAI", icon: MessageSquare, color: "#a78bfa", bgColor: "#a78bfa08", borderColor: "#a78bfa25", aiBadge: true },
 ];
 
@@ -15,9 +24,16 @@ const tierPrices = [0, 7, 15, 25];
 
 export function Pricing() {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const t = translations[language].pricing;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isLight = theme === "light";
+  const lightAccentFill = {
+    background: "color-mix(in srgb, var(--cc-accent-green) 22%, transparent)",
+    color: "var(--cc-accent-green)",
+    borderColor: "color-mix(in srgb, var(--cc-accent-green) 40%, transparent)",
+  } as const;
 
   return (
     <section id="pricing" className="relative bg-[#0a0b0f] py-28 overflow-hidden">
@@ -85,7 +101,13 @@ export function Pricing() {
               >
                 {tier.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <div className="bg-[#39FF71] text-[#0a0b0f] text-xs font-bold px-3 py-1.5 rounded-full">
+                    <div
+                      className="text-xs font-bold px-3 py-1.5 rounded-full"
+                      style={{
+                        background: "var(--cc-accent-green)",
+                        color: "#0a0b0f",
+                      }}
+                    >
                       {language === "en" ? "Most Popular" : "Más Popular"}
                     </div>
                   </div>
@@ -133,11 +155,13 @@ export function Pricing() {
                     className="block w-full text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl text-sm transition-all duration-200 mb-6"
                     style={
                       tier.popular
-                        ? {
-                            background: "#39FF71",
-                            color: "#0a0b0f",
-                            borderColor: "#39FF71",
-                          }
+                        ? isLight
+                          ? lightAccentFill
+                          : {
+                              background: "var(--cc-accent-green)",
+                              color: "#0a0b0f",
+                              borderColor: "var(--cc-accent-green)",
+                            }
                         : {}
                     }
                   >

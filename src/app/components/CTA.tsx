@@ -26,7 +26,7 @@ export function CTA() {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(57,255,113,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,113,0.8) 1px, transparent 1px)",
+            "linear-gradient(rgba(var(--cc-accent-green-rgb),0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--cc-accent-green-rgb),0.8) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />

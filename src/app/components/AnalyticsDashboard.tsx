@@ -14,7 +14,7 @@ const AVG_TAN_CAPITAL = 0.125; // 12.50%
 const FALLBACK_USD_PYG = 6000;
 
 const portfolioRaw = [
-  { name: "Real Estate", value: 23630, color: "#39FF71", assets: 1 },
+  { name: "Real Estate", value: 23630, color: "var(--cc-accent-green)", assets: 1 },
   { name: "Bank CDAs", value: 15000, color: "#00d4ff", assets: 2 },
   { name: "Corporate Bonds", value: 8038, color: "#93c5fd", assets: 4 },
   { name: "Mutual Funds", value: 2500, color: "#f59e0b", assets: 1 },
@@ -141,7 +141,7 @@ function StatCard({
           style={{
             fontSize: "clamp(1.15rem, 2.2vw, 1.55rem)",
             fontWeight: 700,
-            color: isGreen ? "#39FF71" : "var(--cc-text-strong)",
+            color: isGreen ? "var(--cc-accent-green)" : "var(--cc-text-strong)",
             letterSpacing: "-0.02em",
           }}
         >
@@ -260,13 +260,13 @@ export function AnalyticsDashboard() {
                   style={
                     active
                       ? {
-                          backgroundColor: "rgba(57,255,113,0.15)",
-                          color: "#39FF71",
-                          border: "1px solid rgba(57,255,113,0.35)",
+                          backgroundColor: "color-mix(in srgb, var(--cc-accent-green) 15%, transparent)",
+                          color: "var(--cc-accent-green)",
+                          border: "1px solid color-mix(in srgb, var(--cc-accent-green) 35%, transparent)",
                         }
                       : {
                           backgroundColor: "transparent",
-                          color: "rgba(255,255,255,0.45)",
+                          color: "color-mix(in srgb, var(--cc-text-strong) 55%, transparent)",
                           border: "1px solid transparent",
                         }
                   }

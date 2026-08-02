@@ -9,7 +9,7 @@ const testimonials = [
     name: "Alexandra Reed",
     role: "Angel Investor",
     avatar: "AR",
-    avatarColor: "#39FF71",
+    avatarColor: "var(--cc-accent-green)",
     text: "CoreCapital replaced three separate tools I was using. The AI analyst actually understands my portfolio mix and gives advice that feels like it's from a real CFO.",
     rating: 5,
   },

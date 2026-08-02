@@ -4,8 +4,9 @@
   The landing is authored dark-first with hardcoded color utilities
   (bg-[#0a0b0f], text-white/50, border-white/6, ...). Rather than rewrite
   every component, light mode remaps those exact utilities to light
-  equivalents, scoped under the `.theme-light` root. Brand accents
-  (#39FF71 green, #00d4ff cyan) are intentionally kept in both themes.
+  equivalents, scoped under the `.theme-light` root. In light mode the
+  neon green (#39FF71) is remapped to the deeper header "Capital" green
+  (#0ca05a) so accents stay readable on white surfaces.
 
   These rules live outside Tailwind's cascade layer, so they win over the
   layered utilities regardless of specificity.
@@ -17,26 +18,86 @@
   /* Neon accents are tuned for dark backgrounds. */
   --cc-accent-green: #39ff71;
   --cc-accent-cyan: #00d4ff;
+  --cc-accent-green-hover: #5dff8a;
+  --cc-accent-green-rgb: 57, 255, 113;
 }
 .theme-light {
   --cc-text-strong: #0a0b0f;
-  /* Deeper, saturated accents that keep contrast on light surfaces. */
+  /* Same green as the "Capital" wordmark — deeper for contrast on light. */
   --cc-accent-green: #0ca05a;
   --cc-accent-cyan: #0891b2;
+  --cc-accent-green-hover: #0e8f52;
+  --cc-accent-green-rgb: 12, 160, 90;
 }
 
-/* Recolor accent TEXT/ICONS (set via utility classes) for light mode.
-   Solid accent fills (e.g. the green CTA button) intentionally stay neon. */
+/* Recolor accent TEXT/ICONS for light mode. */
 .theme-light .text-\[\#39FF71\] { color: var(--cc-accent-green); }
+.theme-light .hover\:text-\[\#39FF71\]\/85:hover { color: rgba(12, 160, 90, 0.85); }
+.theme-light .fill-\[\#39FF71\] { fill: var(--cc-accent-green); }
 .theme-light .text-\[\#00d4ff\] { color: var(--cc-accent-cyan); }
 
-/* Slightly stronger accent border + tile tints so deepened icons sit well. */
+/* Dots / small solid accents keep the deeper green. */
+.theme-light .bg-\[\#39FF71\] { background-color: var(--cc-accent-green); }
+
+/*
+  Solid neon CTAs become “pill” style in light mode:
+  pale mint fill + green border + green text (same as section badges).
+*/
+.theme-light a.bg-\[\#39FF71\],
+.theme-light button.bg-\[\#39FF71\] {
+  background-color: rgba(12, 160, 90, 0.08);
+  border: 1px solid rgba(12, 160, 90, 0.21);
+  color: var(--cc-accent-green);
+  box-shadow: none;
+}
+.theme-light a.bg-\[\#39FF71\].text-\[\#0a0b0f\],
+.theme-light button.bg-\[\#39FF71\].text-\[\#0a0b0f\] {
+  color: var(--cc-accent-green);
+}
+.theme-light a.hover\:bg-\[\#5dff8a\]:hover,
+.theme-light button.hover\:bg-\[\#5dff8a\]:hover {
+  background-color: rgba(12, 160, 90, 0.14);
+  color: var(--cc-accent-green);
+}
+.theme-light a.hover\:bg-\[\#39FF71\]\/90:hover,
+.theme-light button.hover\:bg-\[\#39FF71\]\/90:hover {
+  background-color: rgba(12, 160, 90, 0.14);
+  color: var(--cc-accent-green);
+}
+
+/* Accent tints / glows */
+.theme-light .bg-\[\#39FF71\]\/0 { background-color: rgba(12, 160, 90, 0); }
+.theme-light .bg-\[\#39FF71\]\/3 { background-color: rgba(12, 160, 90, 0.06); }
+.theme-light .bg-\[\#39FF71\]\/4 { background-color: rgba(12, 160, 90, 0.08); }
+.theme-light .bg-\[\#39FF71\]\/5 { background-color: rgba(12, 160, 90, 0.1); }
+.theme-light .bg-\[\#39FF71\]\/10 { background-color: rgba(12, 160, 90, 0.12); }
 .theme-light .bg-\[\#39FF71\]\/12 { background-color: rgba(12, 160, 90, 0.14); }
 .theme-light .bg-\[\#39FF71\]\/15 { background-color: rgba(12, 160, 90, 0.16); }
-.theme-light .bg-\[\#39FF71\]\/10 { background-color: rgba(12, 160, 90, 0.12); }
+.theme-light .group-hover\:bg-\[\#39FF71\]\/3:hover,
+.theme-light .group:hover .group-hover\:bg-\[\#39FF71\]\/3 { background-color: rgba(12, 160, 90, 0.06); }
+
 .theme-light .bg-\[\#00d4ff\]\/12 { background-color: rgba(8, 145, 178, 0.14); }
 .theme-light .bg-\[\#00d4ff\]\/15 { background-color: rgba(8, 145, 178, 0.16); }
 .theme-light .bg-\[\#00d4ff\]\/10 { background-color: rgba(8, 145, 178, 0.12); }
+
+/* Borders */
+.theme-light .border-\[\#39FF71\]\/15 { border-color: rgba(12, 160, 90, 0.22); }
+.theme-light .border-\[\#39FF71\]\/20 { border-color: rgba(12, 160, 90, 0.28); }
+.theme-light .border-\[\#39FF71\]\/25 { border-color: rgba(12, 160, 90, 0.32); }
+.theme-light .border-\[\#39FF71\]\/30 { border-color: rgba(12, 160, 90, 0.38); }
+.theme-light .hover\:border-\[\#39FF71\]\/20:hover { border-color: rgba(12, 160, 90, 0.28); }
+.theme-light .hover\:border-\[\#39FF71\]\/25:hover { border-color: rgba(12, 160, 90, 0.32); }
+.theme-light .hover\:border-\[\#39FF71\]\/30:hover { border-color: rgba(12, 160, 90, 0.38); }
+.theme-light .focus\:border-\[\#39FF71\]\/50:focus { border-color: rgba(12, 160, 90, 0.5); }
+.theme-light .focus\:ring-\[\#39FF71\]\/30:focus { --tw-ring-color: rgba(12, 160, 90, 0.3); }
+
+/* Gradients authored with neon green */
+.theme-light .via-\[\#39FF71\]\/20 { --tw-gradient-via: rgba(12, 160, 90, 0.28); }
+.theme-light .from-\[\#39FF71\] { --tw-gradient-from: #0ca05a; --tw-gradient-to: rgb(12 160 90 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.theme-light .from-\[\#39FF71\]\/5 { --tw-gradient-from: rgba(12, 160, 90, 0.1); --tw-gradient-to: rgb(12 160 90 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.theme-light .from-\[\#39FF71\]\/30 { --tw-gradient-from: rgba(12, 160, 90, 0.38); --tw-gradient-to: rgb(12 160 90 / 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.theme-light .to-\[\#39FF71\] { --tw-gradient-to: #0ca05a; }
+.theme-light .to-\[\#39FF71\]\/30 { --tw-gradient-to: rgba(12, 160, 90, 0.38); }
 
 /* App root background */
 .cc-root {

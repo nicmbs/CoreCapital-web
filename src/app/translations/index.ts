@@ -322,7 +322,7 @@ export const translations = {
         },
         strategistAI: {
           name: "Strategist",
-          description: "Full AI consultant access for opportunities, risk analysis, and strategy.",
+          description: "AI access for opportunities, risk analysis, and strategy.",
           features: [
             "Everything in Insight",
             "AI Consultant chat (unlimited)",
@@ -706,7 +706,7 @@ export const translations = {
         },
         strategistAI: {
           name: "Strategist",
-          description: "Acceso completo a consultor IA para oportunidades, análisis de riesgo y estrategia.",
+          description: "Acceso a IA para oportunidades, análisis de riesgo y estrategia.",
           features: [
             "Todo lo de Insight",
             "Chat con Consultor IA (ilimitado)",

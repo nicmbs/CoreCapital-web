@@ -8,21 +8,18 @@ const engines = [
   {
     id: "marketPulse",
     icon: Zap,
-    color: "#39FF71", // hex for alpha-tinted surfaces
-    accent: "var(--cc-accent-green)", // theme-aware icon/text color
+    accent: "var(--cc-accent-green)",
     gradient: "from-[#39FF71] to-[#00d4ff]",
   },
   {
     id: "rebalancing",
     icon: RefreshCw,
-    color: "#00d4ff",
     accent: "var(--cc-accent-cyan)",
     gradient: "from-[#00d4ff] to-[#a78bfa]",
   },
   {
     id: "conversational",
     icon: MessageSquare,
-    color: "#a78bfa",
     accent: "#a78bfa",
     gradient: "from-[#a78bfa] to-[#39FF71]",
   },
@@ -54,7 +51,7 @@ function EngineCard({ engine, index }: { engine: typeof engines[0]; index: numbe
         <div className="flex items-start justify-between mb-6">
           <div
             className="w-14 h-14 rounded-2xl flex items-center justify-center"
-            style={{ backgroundColor: `${engine.color}15` }}
+            style={{ backgroundColor: `color-mix(in srgb, ${engine.accent} 12%, transparent)` }}
           >
             <Icon size={26} style={{ color: engine.accent }} />
           </div>
@@ -62,8 +59,8 @@ function EngineCard({ engine, index }: { engine: typeof engines[0]; index: numbe
             className="text-xs font-medium px-3 py-1.5 rounded-full"
             style={{
               color: engine.accent,
-              backgroundColor: `${engine.color}15`,
-              border: `1px solid ${engine.color}25`,
+              backgroundColor: `color-mix(in srgb, ${engine.accent} 12%, transparent)`,
+              border: `1px solid color-mix(in srgb, ${engine.accent} 22%, transparent)`,
             }}
           >
             {t.badge}

@@ -66,7 +66,7 @@ export function Hero() {
           className="absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(57,255,113,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(57,255,113,0.5) 1px, transparent 1px)",
+              "linear-gradient(rgba(var(--cc-accent-green-rgb),0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--cc-accent-green-rgb),0.5) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }}
         />
@@ -181,7 +181,7 @@ export function Hero() {
                     style={{
                       fontSize: "1.4rem",
                       fontWeight: 700,
-                      background: "linear-gradient(135deg, #39FF71, #00d4ff)",
+                      background: "linear-gradient(135deg, var(--cc-accent-green), var(--cc-accent-cyan))",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",

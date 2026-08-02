@@ -15,6 +15,14 @@ export const csBrand = {
 
 export type CSThemeMode = "dark" | "light";
 
+export type CSProductKey = keyof typeof csBrand.products;
+
+/** Product accent colors — deepen neon greens in light mode for contrast. */
+export function csProductAccent(product: CSProductKey, mode: CSThemeMode): string {
+  if (mode === "light" && product === "capital") return "#0ca05a";
+  return csBrand.products[product];
+}
+
 /** Theme-aware surfaces for the CoreSolutions marketing page. */
 export function csTheme(mode: CSThemeMode) {
   const light = mode === "light";
