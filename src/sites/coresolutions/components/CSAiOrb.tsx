@@ -258,9 +258,12 @@ async function probeVideo(url: string): Promise<boolean> {
 export function CSAiOrb() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [finePointer, setFinePointer] = useState(false);
   const [hasVideo, setHasVideo] = useState(false);
   const isSphere = ORB_PRESENTATION === "sphere";
   const cropScale = isSphere ? VIDEO_CROP_SCALE_SPHERE : VIDEO_CROP_SCALE_FLOAT;
+  /** Mouse pull only on desktop — touch must scroll freely. */
+  const pointerInteractive = finePointer && !reduceMotion;
 
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
@@ -272,12 +275,26 @@ export function CSAiOrb() {
   const glowScale = useTransform(hover, [0, 1], [1, 1.1]);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduceMotion(mq.matches);
-    const onChange = () => setReduceMotion(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
+    const reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pointerMq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    setReduceMotion(reduceMq.matches);
+    setFinePointer(pointerMq.matches);
+    const onReduce = () => setReduceMotion(reduceMq.matches);
+    const onPointer = () => {
+      setFinePointer(pointerMq.matches);
+      if (!pointerMq.matches) {
+        pointerX.set(0);
+        pointerY.set(0);
+        hoverRaw.set(0);
+      }
+    };
+    reduceMq.addEventListener("change", onReduce);
+    pointerMq.addEventListener("change", onPointer);
+    return () => {
+      reduceMq.removeEventListener("change", onReduce);
+      pointerMq.removeEventListener("change", onPointer);
+    };
+  }, [pointerX, pointerY, hoverRaw]);
 
   useEffect(() => {
     let cancelled = false;
@@ -301,7 +318,7 @@ export function CSAiOrb() {
   }, [hasVideo, reduceMotion]);
 
   const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
-    if (reduceMotion) return;
+    if (!pointerInteractive) return;
     const r = e.currentTarget.getBoundingClientRect();
     const nx = (e.clientX - r.left) / r.width - 0.5;
     const ny = (e.clientY - r.top) / r.height - 0.5;
@@ -311,6 +328,7 @@ export function CSAiOrb() {
   };
 
   const onPointerLeave = () => {
+    if (!pointerInteractive) return;
     pointerX.set(0);
     pointerY.set(0);
     hoverRaw.set(0);
@@ -361,9 +379,9 @@ export function CSAiOrb() {
 
   return (
     <div
-      className="relative w-full max-w-[480px] lg:max-w-[520px] mx-auto overflow-visible bg-transparent touch-none"
-      onPointerMove={onPointerMove}
-      onPointerLeave={onPointerLeave}
+      className="relative w-full max-w-[480px] lg:max-w-[520px] mx-auto overflow-visible bg-transparent"
+      onPointerMove={pointerInteractive ? onPointerMove : undefined}
+      onPointerLeave={pointerInteractive ? onPointerLeave : undefined}
     >
       <motion.div
         aria-hidden
