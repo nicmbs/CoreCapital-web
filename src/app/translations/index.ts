@@ -311,7 +311,7 @@ export const translations = {
         },
         insightAI: {
           name: "Insight",
-          description: "Your AI curator delivers personalized weekly market intelligence.",
+          description: "Your AI delivers personalized weekly market intelligence.",
           features: [
             "Everything in Essential",
             "AI Analyst agent",
@@ -695,7 +695,7 @@ export const translations = {
         },
         insightAI: {
           name: "Insight",
-          description: "Tu curador IA entrega inteligencia de mercado semanal personalizada.",
+          description: "Tu IA entrega inteligencia de mercado semanal personalizada.",
           features: [
             "Todo lo de Essential",
             "Agente Analista IA",
