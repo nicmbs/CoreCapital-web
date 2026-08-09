@@ -52,7 +52,7 @@ function formatMoney(amountUsd: number, currency: Currency, usdToPyg: number) {
     })}`;
   }
   const pyg = Math.round(amountUsd * usdToPyg);
-  return `₲${pyg.toLocaleString("es-PY")}`;
+  return `Gs ${pyg.toLocaleString("es-PY")}`;
 }
 
 async function fetchUsdToPyg(): Promise<number> {

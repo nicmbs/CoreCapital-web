@@ -198,9 +198,10 @@ function AuraBlob({
   const filter = useTransform(saturate, (s) => `blur(${blob.blur}px) saturate(${s})`);
 
   const blue = csBrand.blueBright;
-  const magenta = "#E11D8F";
-  const cA = blob.invert ? magenta : blue;
-  const cB = blob.invert ? blue : magenta;
+  // Soft secondary (was neon magenta) — keeps depth without "AI club" pink.
+  const secondary = "#3B82F6";
+  const cA = blob.invert ? secondary : blue;
+  const cB = blob.invert ? blue : secondary;
 
   return (
     <motion.div
@@ -395,7 +396,7 @@ export function CSAiOrb() {
         <motion.div
           className="h-full w-full rounded-full blur-[100px]"
           style={{
-            background: `radial-gradient(circle, ${csBrand.blueBright}70 0%, #E11D8F44 48%, transparent 72%)`,
+            background: `radial-gradient(circle, ${csBrand.blueBright}66 0%, #0055FF33 48%, transparent 72%)`,
           }}
           animate={
             reduceMotion

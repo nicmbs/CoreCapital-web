@@ -1,0 +1,26 @@
+/* Modern platform type — local preview */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap");
+
+:root {
+  --cc-font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --cc-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --cc-font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+/* Let interactive atmosphere breathe through solid section fills */
+.theme-dark.cc-root section.bg-\[\#0a0b0f\],
+.theme-dark.cc-root .bg-\[\#0a0b0f\] {
+  background-color: rgba(10, 11, 15, 0.78) !important;
+}
+.cc-root.theme-dark {
+  background-color: transparent !important;
+}
+
+.theme-light.cc-root section.bg-\[\#0a0b0f\],
+.theme-light.cc-root .bg-\[\#0a0b0f\] {
+  /* More transparent so the richer light atmosphere reads through */
+  background-color: rgba(236, 241, 246, 0.55) !important;
+}
+.cc-root.theme-light {
+  background-color: transparent !important;
+}

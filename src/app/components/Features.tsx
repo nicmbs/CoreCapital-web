@@ -12,11 +12,15 @@ import {
   Building2,
   Coins,
 } from "lucide-react";
-import portfolioImage from "figma:asset/9a40648c48af599d413c9760fdc4092b60406d44.png";
-import projectionsImage from "figma:asset/23f41271582607d2a1db782f60a3fd4b0be255ca.png";
-import analystImage from "figma:asset/a7a3efe018ee449ae6db95814c5f83259bc82389.png";
 import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeContext";
 import { translations } from "../translations";
+
+const showcaseImages = {
+  portfolio: { dark: "/cc/portfolio-dark.png", light: "/cc/portfolio-light.png" },
+  projections: { dark: "/cc/projections-dark.png", light: "/cc/projections-light.png" },
+  analyst: { dark: "/cc/analyst-dark.png", light: "/cc/analyst-light.png" },
+} as const;
 
 const featureIcons = [
   { id: "aiAnalyst", icon: Brain, color: "var(--cc-accent-green)" },
@@ -41,8 +45,9 @@ function FeatureCard({ feature, index }: { feature: typeof featureIcons[0]; inde
       ref={ref}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
+      whileHover={{ y: -6, transition: { duration: 0.2 } }}
       transition={{ duration: 0.5, delay: (index % 4) * 0.1 }}
-      className="group relative bg-[#111318] border border-white/6 rounded-2xl p-6 hover:border-white/15 transition-all duration-300 hover:-translate-y-1"
+      className="group relative bg-[#111318] border border-white/6 rounded-2xl p-6 hover:border-white/15 transition-colors duration-300 backdrop-blur-sm"
     >
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -83,14 +88,15 @@ function FeatureCard({ feature, index }: { feature: typeof featureIcons[0]; inde
 
 export function Features() {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const t = translations[language].features;
   const titleRef = useRef(null);
   const inView = useInView(titleRef, { once: true, margin: "-80px" });
 
   const screens = [
-    { img: portfolioImage, key: "portfolio" },
-    { img: projectionsImage, key: "projections" },
-    { img: analystImage, key: "analyst" },
+    { img: showcaseImages.portfolio[theme], key: "portfolio" as const },
+    { img: showcaseImages.projections[theme], key: "projections" as const },
+    { img: showcaseImages.analyst[theme], key: "analyst" as const },
   ];
 
   return (
@@ -174,8 +180,9 @@ export function Features() {
                   className="group relative bg-[#111318] border border-white/6 rounded-3xl overflow-hidden hover:border-white/15 transition-all duration-300"
                 >
                   <div className="relative overflow-hidden aspect-[16/10]">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#111318] via-transparent to-transparent z-10 pointer-events-none" />
+                    <div className="showcase-image-fade absolute inset-0 bg-gradient-to-t from-[#111318] via-transparent to-transparent z-10 pointer-events-none" />
                     <img
+                      key={item.img}
                       src={item.img}
                       alt={screenData.title}
                       className="w-full h-full object-cover object-top block group-hover:scale-[1.02] transition-transform duration-500"

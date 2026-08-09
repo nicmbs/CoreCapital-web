@@ -1,107 +1,101 @@
-import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
-import { TrendingUp, Shield, Zap, ArrowRight, Coins } from "lucide-react";
-import analyticsImage from "figma:asset/ac77aa8ddb3da79c77739a2229387f7229a002b1.png";
-import logoImage from "figma:asset/587d4841ce1110b4d856258b2a922555fd7a1195.png";
+import { useRef, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useScroll,
+} from "motion/react";
+import { ArrowRight, Coins, TrendingUp, Shield, Zap } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeContext";
 import { translations } from "../translations";
 import { PoweredByCoreSolutions } from "./PoweredByCoreSolutions";
 
-const stats = [
-  { value: "$16T", label: "Projected RWA Market (2030)" },
-  { value: "T+0", label: "Yield Settlement" },
-  { value: "100%", label: "Audited Physical Assets" },
-];
-
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !started.current) {
-          started.current = true;
-          const duration = 2000;
-          const steps = 60;
-          const increment = target / steps;
-          let current = 0;
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              setCount(target);
-              clearInterval(timer);
-            } else {
-              setCount(Math.floor(current));
-            }
-          }, duration / steps);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [target]);
-
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
-}
+const analyticsByTheme = {
+  dark: "/cc/analytics-dark.png",
+  light: "/cc/analytics-light.png",
+} as const;
 
 export function Hero() {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const t = translations[language].hero;
+  const analyticsImage = analyticsByTheme[theme];
+  const sectionRef = useRef<HTMLElement>(null);
+  const visualRef = useRef<HTMLDivElement>(null);
 
-  const stats = [
-    { value: "$16T", label: t.stats.assets },
-    { value: "T+0", label: t.stats.growth },
-    { value: "100%", label: t.stats.users },
-  ];
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const visualY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const visualOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.35]);
+
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const hover = useMotionValue(0);
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 120, damping: 18 });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 120, damping: 18 });
+  const glareOpacity = useSpring(hover, { stiffness: 180, damping: 24 });
+  const glareX = useTransform(mx, (v) => `${(v + 0.5) * 100}%`);
+  const glareY = useTransform(my, (v) => `${(v + 0.5) * 100}%`);
+  const glare = useMotionTemplate`radial-gradient(420px circle at ${glareX} ${glareY}, rgba(57,255,113,0.18), transparent 45%)`;
+
+  const onVisualEnter = () => {
+    hover.set(1);
+  };
+  const onVisualMove = (e: ReactPointerEvent) => {
+    const el = visualRef.current;
+    if (!el) return;
+    hover.set(1);
+    const r = el.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onVisualLeave = () => {
+    hover.set(0);
+    mx.set(0);
+    my.set(0);
+  };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 pb-16" id="home">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-[#0a0b0f]">
-        {/* Grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(var(--cc-accent-green-rgb),0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--cc-accent-green-rgb),0.5) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-        {/* Radial glow */}
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[#39FF71]/5 rounded-full blur-[120px]" />
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[100px]" />
-      </div>
-
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-20"
+      id="home"
+    >
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
-          {/* Left content */}
+        <div className="flex flex-col lg:flex-row items-center gap-14 lg:gap-16">
           <div className="flex-1 text-center lg:text-left">
-            {/* Badges */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8"
+              transition={{ duration: 0.5 }}
+              className="inline-flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-7"
             >
-              <div className="inline-flex items-center gap-2 bg-[#39FF71]/10 border border-[#39FF71]/20 rounded-full px-4 py-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#39FF71] animate-pulse" />
-                <span className="text-[#39FF71] text-sm font-medium">{t.badge}</span>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#39FF71]/25 bg-[#39FF71]/10 px-4 py-1.5">
+                <span className="text-sm font-medium text-[#39FF71]">{t.badge}</span>
               </div>
               <PoweredByCoreSolutions />
             </motion.div>
 
-            {/* Headline */}
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-white mb-6"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em" }}
+              transition={{ duration: 0.65, delay: 0.06 }}
+              className="mb-6"
+              style={{
+                fontSize: "clamp(2.6rem, 6vw, 4.4rem)",
+                fontWeight: 700,
+                lineHeight: 1.08,
+                letterSpacing: "-0.035em",
+                wordSpacing: "0.18em",
+                color: "var(--cc-text-strong)",
+              }}
             >
-              {t.title1}{" "}
+              {t.title1}
               <br />
               <span
                 style={{
@@ -115,30 +109,28 @@ export function Hero() {
               </span>
             </motion.h1>
 
-            {/* Subheadline */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-white/55 mb-10 max-w-xl mx-auto lg:mx-0"
-              style={{ fontSize: "1.125rem", lineHeight: 1.7 }}
+              transition={{ duration: 0.55, delay: 0.14 }}
+              className="text-white/55 mb-9 max-w-xl mx-auto lg:mx-0"
+              style={{ fontSize: "1.08rem", lineHeight: 1.7 }}
             >
               {t.subtitle}
             </motion.p>
 
-            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="grid grid-cols-1 sm:grid-cols-[1.7fr_1fr] gap-4 max-w-xl mx-auto lg:mx-0 mb-14"
+              transition={{ duration: 0.5, delay: 0.22 }}
+              className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto lg:mx-0"
             >
               <a
                 href="https://app.corecapitalpy.com"
-                className="group flex items-center justify-center gap-2 whitespace-nowrap bg-[#39FF71] text-[#0a0b0f] font-semibold px-6 py-4 rounded-2xl text-base hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_30px_rgba(57,255,113,0.4)]"
+                className="group inline-flex items-center justify-center gap-2 bg-[#39FF71] text-[#0a0b0f] font-semibold px-7 py-3.5 rounded-xl text-base hover:bg-[#5dff8a] transition-colors"
               >
                 {t.cta}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
               <a
                 href="#contact"
@@ -146,155 +138,136 @@ export function Hero() {
                   e.preventDefault();
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
                   setTimeout(() => {
-                    (document.getElementById("contact-name") as HTMLInputElement | null)?.focus({ preventScroll: true });
+                    (document.getElementById("contact-name") as HTMLInputElement | null)?.focus({
+                      preventScroll: true,
+                    });
                   }, 600);
                 }}
-                className="flex items-center justify-center gap-2 whitespace-nowrap bg-transparent text-white font-semibold px-6 py-4 rounded-2xl text-base border border-white/15 hover:border-white/30 hover:bg-white/5 transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 border border-white/15 text-white font-medium px-7 py-3.5 rounded-xl text-base hover:bg-white/5 hover:border-white/30 transition-colors"
               >
                 {t.contactCta}
               </a>
-              <a
-                href="#tokenization"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("tokenization")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
-                className="group sm:col-span-2 flex items-center justify-center gap-2 bg-[#00d4ff]/10 text-[#00d4ff] font-semibold px-8 py-4 rounded-2xl text-base border border-[#00d4ff]/30 hover:bg-[#00d4ff]/15 hover:border-[#00d4ff]/50 transition-all duration-200"
-              >
-                <Coins size={16} />
-                {t.tokenizationCta}
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
             </motion.div>
 
-            {/* Stats */}
-            <motion.div
+            <motion.button
+              type="button"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0"
+              transition={{ delay: 0.35 }}
+              onClick={() =>
+                document.getElementById("tokenization")?.scrollIntoView({ behavior: "smooth", block: "start" })
+              }
+              className="mt-5 inline-flex items-center gap-2 text-sm text-white/40 hover:text-[#00d4ff] transition-colors"
             >
-              {stats.map((stat, i) => (
-                <div key={stat.label} className="text-center lg:text-left">
+              <Coins size={14} />
+              {t.tokenizationCta}
+            </motion.button>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 }}
+              className="mt-10 grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0"
+            >
+              {[
+                { k: "RWA", v: "$16T" },
+                { k: "Settle", v: "T+0" },
+                { k: "Audit", v: "100%" },
+              ].map((item) => (
+                <div
+                  key={item.k}
+                  className="rounded-xl border border-white/8 bg-white/[0.03] px-3 py-3 backdrop-blur-sm"
+                >
                   <div
-                    className="text-white mb-1"
-                    style={{
-                      fontSize: "1.4rem",
-                      fontWeight: 700,
-                      background: "linear-gradient(135deg, var(--cc-accent-green), var(--cc-accent-cyan))",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text",
-                    }}
+                    className="text-[10px] uppercase tracking-[0.14em] text-white/35 mb-1"
+                    style={{ fontFamily: "var(--cc-font-mono)" }}
                   >
-                    {stat.value}
+                    {item.k}
                   </div>
-                  <div className="text-white/45 text-xs">{stat.label}</div>
+                  <div className="text-lg font-semibold text-white" style={{ fontFamily: "var(--cc-font-mono)" }}>
+                    {item.v}
+                  </div>
                 </div>
               ))}
             </motion.div>
           </div>
 
-          {/* Right - App Mockup */}
           <motion.div
-            initial={{ opacity: 0, x: 60, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+            ref={visualRef}
+            style={{ y: visualY, opacity: visualOpacity, perspective: 1200 }}
+            onPointerEnter={onVisualEnter}
+            onPointerMove={onVisualMove}
+            onPointerLeave={onVisualLeave}
             className="flex-1 relative w-full max-w-2xl"
           >
-            {/* Floating badges */}
+            {/* Board + floating cards share the same 3D tilt — only while hovering this block */}
             <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -left-4 z-20 bg-[#111318] border border-[#39FF71]/20 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl"
+              style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
+              className="relative"
             >
-              <div className="w-8 h-8 rounded-lg bg-[#39FF71]/15 flex items-center justify-center">
-                <TrendingUp size={16} className="text-[#39FF71]" />
+              <div className="relative rounded-2xl overflow-hidden border border-white/12 bg-[#111318]">
+                <motion.div
+                  className="absolute inset-0 z-10 pointer-events-none mix-blend-screen hero-dashboard-glare"
+                  style={{ background: glare, opacity: glareOpacity }}
+                />
+                <img
+                  key={analyticsImage}
+                  src={analyticsImage}
+                  alt="CoreCapital Analytics Dashboard"
+                  className="w-full h-auto block"
+                  draggable={false}
+                />
+                <div className="hero-dashboard-fade absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0a0b0f]/80 to-transparent" />
               </div>
-              <div>
-                <div className="text-[#39FF71] text-sm font-semibold">+12.4%</div>
-                <div className="text-white/50 text-xs">{t.floating.monthlyReturn}</div>
-              </div>
-            </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute -bottom-4 -right-4 z-20 bg-[#111318] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl"
-            >
-              <div className="w-8 h-8 rounded-lg bg-cyan-500/15 flex items-center justify-center">
-                <Shield size={16} className="text-cyan-400" />
-              </div>
-              <div>
-                <div className="text-white text-sm font-semibold">{t.floating.bankGrade}</div>
-                <div className="text-white/50 text-xs">{t.floating.encryption}</div>
-              </div>
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -left-4 z-20 bg-[#111318]/95 border border-[#39FF71]/20 rounded-2xl px-4 py-3 flex items-center gap-3 backdrop-blur-md"
+                style={{ transform: "translateZ(28px)" }}
+              >
+                <div className="w-8 h-8 rounded-lg bg-[#39FF71]/15 flex items-center justify-center">
+                  <TrendingUp size={16} className="text-[#39FF71]" />
+                </div>
+                <div>
+                  <div className="text-[#39FF71] text-sm font-semibold">+12.4%</div>
+                  <div className="text-white/50 text-xs">{t.floating.monthlyReturn}</div>
+                </div>
+              </motion.div>
 
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute top-1/2 -right-8 z-20 bg-[#111318] border border-[#39FF71]/20 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-2xl"
-            >
-              <div className="w-8 h-8 rounded-lg bg-[#39FF71]/15 flex items-center justify-center">
-                <Zap size={16} className="text-[#39FF71]" />
-              </div>
-              <div>
-                <div className="text-white text-sm font-semibold">{t.floating.aiAnalyst}</div>
-                <div className="text-white/50 text-xs">{t.floating.liveInsights}</div>
-              </div>
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="absolute -bottom-4 -right-4 z-20 bg-[#111318]/95 border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 backdrop-blur-md"
+                style={{ transform: "translateZ(36px)" }}
+              >
+                <div className="w-8 h-8 rounded-lg bg-cyan-500/15 flex items-center justify-center">
+                  <Shield size={16} className="text-cyan-400" />
+                </div>
+                <div>
+                  <div className="text-white text-sm font-semibold">{t.floating.bankGrade}</div>
+                  <div className="text-white/50 text-xs">{t.floating.encryption}</div>
+                </div>
+              </motion.div>
 
-            {/* Main mockup */}
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(57,255,113,0.12)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#39FF71]/5 to-cyan-500/5 pointer-events-none z-10" />
-              <img
-                src={analyticsImage}
-                alt="CoreCapital Analytics Dashboard"
-                className="w-full h-auto block"
-              />
-            </div>
-
-            {/* Logo badge below mockup */}
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.92 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-              className="flex items-center justify-center mt-8"
-            >
               <motion.div
                 animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="flex items-center gap-4 bg-[#111318]/80 backdrop-blur-sm border border-[#39FF71]/25 rounded-2xl px-5 py-3.5 shadow-[0_0_30px_rgba(57,255,113,0.12)]"
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute top-1/2 -right-6 z-20 bg-[#111318]/95 border border-[#39FF71]/20 rounded-2xl px-4 py-3 flex items-center gap-3 backdrop-blur-md"
+                style={{ transform: "translateZ(44px)" }}
               >
-                <motion.div
-                  animate={{ scale: [1, 1.06, 1], boxShadow: ["0 0 14px rgba(57,255,113,0.2)", "0 0 28px rgba(57,255,113,0.4)", "0 0 14px rgba(57,255,113,0.2)"] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-14 h-14 rounded-2xl overflow-hidden border border-[#39FF71]/30"
-                >
-                  <img src={logoImage} alt="CoreCapital" className="w-full h-full object-cover" />
-                </motion.div>
-                <div className="text-left">
-                  <div className="text-white font-bold" style={{ fontSize: "1.35rem", letterSpacing: "-0.01em" }}>
-                    Core<span className="text-[#39FF71]">Capital</span>
-                  </div>
-                  <div className="text-white/40 text-xs mt-0.5">{t.floating.platform}</div>
-                  <div className="flex items-center gap-1.5 mt-1.5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#39FF71] animate-pulse" />
-                    <span className="text-[#39FF71] text-xs">{t.floating.aiLive}</span>
-                  </div>
+                <div className="w-8 h-8 rounded-lg bg-[#39FF71]/15 flex items-center justify-center">
+                  <Zap size={16} className="text-[#39FF71]" />
+                </div>
+                <div>
+                  <div className="text-white text-sm font-semibold">{t.floating.aiAnalyst}</div>
+                  <div className="text-white/50 text-xs">{t.floating.liveInsights}</div>
                 </div>
               </motion.div>
             </motion.div>
-
-            {/* Glow behind mockup */}
-            <div className="absolute inset-0 -z-10 bg-[#39FF71]/10 blur-[60px] rounded-full scale-110" />
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0b0f] to-transparent pointer-events-none" />
     </section>
   );
 }

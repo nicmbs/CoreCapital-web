@@ -1,10 +1,13 @@
 import { useLanguage } from "../../app/context/LanguageContext";
 import { useTheme } from "../../app/context/ThemeContext";
+import { InteractiveAtmosphere } from "../../app/components/InteractiveAtmosphere";
+import { ScrollProgress } from "../../app/components/ScrollProgress";
 import { CSNavbar } from "./components/CSNavbar";
 import { CSHome } from "./components/CSHome";
 import { CSSolutionSection } from "./components/CSSolutionSection";
 import { csBrand, csTheme } from "./brand";
 import { csTranslations } from "./content";
+import "./cs-aurora.css";
 
 /**
  * CoreSolutions marketing site — structured for a future dedicated domain.
@@ -15,30 +18,41 @@ export default function CoreSolutionsPage() {
   const { theme } = useTheme();
   const t = csTranslations[language];
   const surface = csTheme(theme);
+  const isLight = theme === "light";
 
   return (
     <div
-      className="cs-root relative min-h-screen transition-colors duration-300"
+      className={`cs-root relative min-h-screen transition-colors duration-300 ${
+        isLight ? "cs-theme-light" : "cs-theme-dark"
+      }`}
       style={{
-        backgroundColor: surface.bg,
+        backgroundColor: "transparent",
         color: surface.fg,
-        fontFamily: "system-ui, -apple-system, sans-serif",
+        fontFamily: "var(--cc-font-sans)",
       }}
     >
-      {/* Fixed atmosphere — figure lives as animated orb in Inicio */}
-      <div className="pointer-events-none fixed inset-0 z-0">
+      <InteractiveAtmosphere variant="solutions" />
+      <ScrollProgress color={csBrand.blueBright} />
+
+      {/* Animated aurora atmosphere */}
+      <div className="pointer-events-none fixed inset-0 z-[1] overflow-hidden">
         <div
-          className="absolute inset-0 transition-opacity duration-300"
+          className="cs-aurora-art"
           style={{
             opacity: surface.atmosphereOpacity,
             backgroundImage: "url(/cs/page-atmosphere.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "center right",
+            filter: isLight ? "brightness(1.35) contrast(1.1) saturate(1.05)" : undefined,
           }}
         />
+        <div className="cs-aurora-ribbon cs-aurora-ribbon-a" />
+        <div className="cs-aurora-ribbon cs-aurora-ribbon-b" />
+        <div className="cs-aurora-sheen" />
         <div
           className="absolute inset-0 transition-opacity duration-300"
-          style={{ background: surface.overlay }}
+          style={{
+            background: surface.overlay,
+            opacity: isLight ? 1 : 0.85,
+          }}
         />
       </div>
 

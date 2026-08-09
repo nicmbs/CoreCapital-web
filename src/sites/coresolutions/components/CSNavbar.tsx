@@ -39,11 +39,16 @@ export function CSNavbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={
-        scrolled
+        isLight || scrolled
           ? {
-              backgroundColor: surface.navScrolledBg,
-              backdropFilter: "blur(20px)",
+              backgroundColor: isLight
+                ? scrolled
+                  ? surface.navScrolledBg
+                  : "rgba(246,249,252,0.88)"
+                : surface.navScrolledBg,
+              backdropFilter: "blur(18px)",
               borderBottom: `1px solid ${surface.navBorder}`,
+              boxShadow: isLight ? "0 1px 0 rgba(10,11,15,0.04)" : undefined,
             }
           : undefined
       }

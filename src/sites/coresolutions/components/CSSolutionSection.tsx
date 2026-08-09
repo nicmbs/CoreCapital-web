@@ -1,11 +1,12 @@
 import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { useTheme } from "../../../app/context/ThemeContext";
 import { csProductAccent, csTheme, type CSProductKey } from "../brand";
 import type { CSSection } from "../content";
 
 export function CSSolutionSection({ section }: { section: CSSection }) {
+  const sectionRef = useRef<HTMLElement>(null);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const { theme } = useTheme();
@@ -13,8 +14,20 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
   const accent = csProductAccent(section.id as CSProductKey, theme);
   const glow = theme === "light" ? `${accent}33` : `${accent}66`;
 
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const railScale = useTransform(scrollYProgress, [0.15, 0.5, 0.85], [0.15, 1, 0.2]);
+  const blobY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
-    <section id={section.anchor} className="relative py-28 overflow-hidden">
+    <section ref={sectionRef} id={section.anchor} className="relative py-28 overflow-hidden">
+      <motion.div
+        aria-hidden
+        className="absolute left-0 top-24 bottom-24 w-[3px] origin-top rounded-full"
+        style={{ backgroundColor: accent, scaleY: railScale, opacity: 0.85 }}
+      />
       <div
         aria-hidden
         className="absolute top-0 left-0 right-0 h-px"
@@ -22,10 +35,10 @@ export function CSSolutionSection({ section }: { section: CSSection }) {
           background: `linear-gradient(90deg, transparent, ${accent}40, transparent)`,
         }}
       />
-      <div
+      <motion.div
         aria-hidden
         className="absolute top-1/3 right-0 w-[420px] h-[420px] rounded-full blur-[140px] pointer-events-none"
-        style={{ backgroundColor: `${accent}14` }}
+        style={{ backgroundColor: `${accent}14`, y: blobY }}
       />
 
       <div ref={ref} className="relative z-10 max-w-7xl mx-auto px-6">

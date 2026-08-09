@@ -33,7 +33,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   // Keep the document background in sync so there's no flash outside the app root.
   useEffect(() => {
     document.documentElement.style.colorScheme = theme;
-    document.body.style.backgroundColor = theme === "light" ? "#f4f6f9" : "#0a0b0f";
+    document.body.style.backgroundColor = theme === "light" ? "#e8eef3" : "#0a0b0f";
   }, [theme]);
 
   const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");

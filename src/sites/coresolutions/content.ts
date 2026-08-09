@@ -26,6 +26,7 @@ type CSLocaleCopy = {
   };
   home: {
     tagline: string;
+    exploreCta: string;
     aboutBadge: string;
     aboutTitle: string;
     aboutP1Before: string;
@@ -339,6 +340,7 @@ export const csTranslations: Record<"es" | "en", CSLocaleCopy> = {
     },
     home: {
       tagline: "Ecosistemas de IA orientados al negocio",
+      exploreCta: "Explorar soluciones",
       aboutBadge: "Sobre nosotros",
       aboutTitle: "Nuestro ADN",
       aboutP1Before:
@@ -365,6 +367,7 @@ export const csTranslations: Record<"es" | "en", CSLocaleCopy> = {
     },
     home: {
       tagline: "AI ecosystems built for business",
+      exploreCta: "Explore solutions",
       aboutBadge: "About us",
       aboutTitle: "Our DNA",
       aboutP1Before:

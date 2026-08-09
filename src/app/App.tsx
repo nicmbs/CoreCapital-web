@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
+import { ScrollToTop } from "./components/ScrollToTop";
 import CoreCapitalPage from "../sites/corecapital/CoreCapitalPage";
 import CoreSolutionsPage from "../sites/coresolutions/CoreSolutionsPage";
 
@@ -9,6 +10,7 @@ export default function App() {
     <ThemeProvider>
       <LanguageProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<CoreCapitalPage />} />
             {/* /* matches /coresolutions and /coresolutions/ (GitHub Pages trailing slash) */}
