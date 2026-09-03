@@ -34,6 +34,14 @@ jobs:
           touch dist/.nojekyll
           # GitHub Pages serves 404.html for unknown paths (e.g. /coresolutions)
           cp dist/index.html dist/404.html
+          # The 404.html fallback renders the right route but answers HTTP 404.
+          # Google fetches the privacy policy and terms URLs when verifying our
+          # own OAuth client, so those must answer 200: give each known route a
+          # real index.html.
+          for route in coresolutions legal legal/terminos legal/privacidad legal/cookies; do
+            mkdir -p "dist/$route"
+            cp dist/index.html "dist/$route/index.html"
+          done
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
