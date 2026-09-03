@@ -3,7 +3,9 @@ import { motion, useInView } from "motion/react";
 import { CheckCircle } from "lucide-react";
 import logoImage from "figma:asset/587d4841ce1110b4d856258b2a922555fd7a1195.png";
 import { useLanguage } from "../context/LanguageContext";
+import { Link } from "react-router";
 import { translations } from "../translations";
+import { LEGAL_DOCS, LEGAL_DOC_ORDER } from "../../sites/corecapital/legalDocs";
 
 export function CTA() {
   const ref = useRef(null);
@@ -112,6 +114,21 @@ export function CTA() {
               contacto@corecapitalpy.com
             </a>
             <p className="text-white/25 text-xs">© 2026 CoreCapital. {t.rightsShort}</p>
+          </div>
+
+          {/* Enlaces legales — Google exige que la política de privacidad y los
+              términos sean alcanzables desde la home para verificar el cliente
+              OAuth propio. */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 md:justify-start">
+            {LEGAL_DOC_ORDER.map((key) => (
+              <Link
+                key={key}
+                to={LEGAL_DOCS[key].path}
+                className="text-white/35 text-xs hover:text-white/70 transition-colors"
+              >
+                {LEGAL_DOCS[key].title[language]}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
