@@ -1,0 +1,153 @@
+/*
+ * Tipografía de los documentos legales. El sitio no usa @tailwindcss/typography,
+ * así que el estilo del markdown renderizado vive acá, acotado a `.cc-legal`.
+ * Las variables las define LegalPage según el tema activo.
+ */
+
+.cc-legal {
+  color: var(--legal-fg);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.cc-legal h1,
+.cc-legal h2,
+.cc-legal h3,
+.cc-legal h4 {
+  color: var(--legal-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 6rem;
+}
+
+.cc-legal h1 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin: 0 0 1.5rem;
+}
+
+.cc-legal h2 {
+  font-size: 1.25rem;
+  margin: 2.5rem 0 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--legal-border);
+}
+
+.cc-legal h3 {
+  font-size: 1.05rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.cc-legal h4 {
+  font-size: 0.95rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.cc-legal p {
+  margin: 0 0 1rem;
+}
+
+.cc-legal strong {
+  color: var(--legal-heading);
+  font-weight: 600;
+}
+
+.cc-legal a {
+  color: var(--legal-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cc-legal a:hover {
+  opacity: 0.8;
+}
+
+.cc-legal ul,
+.cc-legal ol {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+}
+
+.cc-legal ul {
+  list-style: disc;
+}
+
+.cc-legal ol {
+  list-style: decimal;
+}
+
+.cc-legal li {
+  margin-bottom: 0.4rem;
+}
+
+.cc-legal li::marker {
+  color: var(--legal-muted);
+}
+
+.cc-legal hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid var(--legal-border);
+}
+
+.cc-legal blockquote {
+  margin: 1.25rem 0;
+  padding: 0.85rem 1.1rem;
+  border-left: 3px solid var(--legal-accent);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: var(--legal-quote-bg);
+}
+
+.cc-legal blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.cc-legal code {
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.3rem;
+  background: var(--legal-code-bg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+
+/* Las tablas de estas políticas son anchas (proveedores, plazos de conservación).
+   El scroll horizontal queda contenido en el envoltorio: la página nunca
+   desborda, ni en móvil. */
+.cc-legal .cc-legal-table-wrap {
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--legal-border);
+  border-radius: 0.6rem;
+}
+
+.cc-legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.cc-legal th,
+.cc-legal td {
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--legal-border);
+}
+
+.cc-legal th {
+  color: var(--legal-heading);
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--legal-th-bg);
+}
+
+.cc-legal tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Varias tablas de estos documentos son de dos columnas sin encabezado
+   (`| | |` en el origen). Sin esto se dibuja una franja gris vacía. */
+.cc-legal thead:not(:has(th:not(:empty))) {
+  display: none;
+}
