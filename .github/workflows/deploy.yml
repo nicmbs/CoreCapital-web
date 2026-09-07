@@ -32,13 +32,15 @@ jobs:
       - name: Add .nojekyll and SPA fallback
         run: |
           touch dist/.nojekyll
-          # GitHub Pages serves 404.html for unknown paths (e.g. /coresolutions)
+          # GitHub Pages serves 404.html for unknown paths
           cp dist/index.html dist/404.html
           # The 404.html fallback renders the right route but answers HTTP 404.
           # Google fetches the privacy policy and terms URLs when verifying our
           # own OAuth client, so those must answer 200: give each known route a
           # real index.html.
-          for route in coresolutions legal legal/terminos legal/privacidad legal/cookies; do
+          # /coresolutions ya tiene su propio index.html (redirect estatico a
+          # coresolutions.services) copiado desde public/, no lo pisamos aca.
+          for route in legal legal/terminos legal/privacidad legal/cookies; do
             mkdir -p "dist/$route"
             cp dist/index.html "dist/$route/index.html"
           done
