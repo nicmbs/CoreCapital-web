@@ -3,7 +3,7 @@ import { LanguageProvider } from "./context/LanguageContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { ScrollToTop } from "./components/ScrollToTop";
 import CoreCapitalPage from "../sites/corecapital/CoreCapitalPage";
-import CoreSolutionsPage from "../sites/coresolutions/CoreSolutionsPage";
+import CoreSolutionsRedirect from "./components/CoreSolutionsRedirect";
 import LegalPage from "../sites/corecapital/LegalPage";
 
 export default function App() {
@@ -14,8 +14,9 @@ export default function App() {
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<CoreCapitalPage />} />
-            {/* /* matches /coresolutions and /coresolutions/ (GitHub Pages trailing slash) */}
-            <Route path="/coresolutions/*" element={<CoreSolutionsPage />} />
+            {/* CoreSolutions vive ahora en coresolutions.services; la ruta vieja
+                sólo redirige para no romper enlaces publicados. */}
+            <Route path="/coresolutions/*" element={<CoreSolutionsRedirect />} />
             {/* Documentos legales públicos — sin sesión: los revisa Google al
                 verificar el cliente OAuth propio. */}
             <Route path="/legal" element={<Navigate to="/legal/terminos" replace />} />
