@@ -5,7 +5,7 @@ import { Link, Navigate, useParams } from "react-router";
 import { ArrowLeft, Globe, Moon, Sun } from "lucide-react";
 import { useLanguage } from "../../app/context/LanguageContext";
 import { useTheme } from "../../app/context/ThemeContext";
-import { LEGAL_DOCS, LEGAL_DOC_ORDER, type LegalDocSlug } from "./legalDocs";
+import { LEGAL_SITES } from "./legalDocs";
 import "./legal.css";
 
 const COPY = {
@@ -21,9 +21,6 @@ const COPY = {
   },
 } as const;
 
-function isLegalDocSlug(value: string | undefined): value is LegalDocSlug {
-  return !!value && value in LEGAL_DOCS;
-}
 
 /**
  * Documentos legales públicos (`/legal/:slug`).
@@ -32,17 +29,18 @@ function isLegalDocSlug(value: string | undefined): value is LegalDocSlug {
  * el cliente OAuth propio, y el conjunto legal exige que estén publicados antes
  * de enlazarlos desde el producto.
  */
-export default function LegalPage() {
+export default function LegalPage({ site = "corecapital" }: { site?: keyof typeof LEGAL_SITES }) {
   const { slug } = useParams<{ slug: string }>();
   const { language, setLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+  const { docs, order, defaultSlug, wordmark, showOperator } = LEGAL_SITES[site];
 
-  if (!isLegalDocSlug(slug)) {
-    return <Navigate to={LEGAL_DOCS.terminos.path} replace />;
+  if (!slug || !(slug in docs)) {
+    return <Navigate to={docs[defaultSlug].path} replace />;
   }
 
   const light = theme === "light";
-  const doc = LEGAL_DOCS[slug];
+  const doc = docs[slug];
   const t = COPY[language];
 
   const palette = light
@@ -118,16 +116,16 @@ export default function LegalPage() {
 
           <p className={`mt-8 text-xs uppercase tracking-[0.18em] ${subtle}`}>{t.eyebrow}</p>
           <span className="mt-2 block text-2xl font-semibold tracking-tight">
-            Core<span className="text-[var(--legal-accent)]">Capital</span>
+            {wordmark[0]}<span className="text-[var(--legal-accent)]">{wordmark[1]}</span>
           </span>
 
           <nav className="mt-6 flex flex-wrap gap-2">
-            {LEGAL_DOC_ORDER.map((key) => {
+            {order.map((key) => {
               const active = key === slug;
               return (
                 <Link
                   key={key}
-                  to={LEGAL_DOCS[key].path}
+                  to={docs[key].path}
                   className={`rounded-full border px-3.5 py-1.5 text-xs transition-colors ${
                     active
                       ? "border-[var(--legal-accent)] text-[var(--legal-accent)]"
@@ -137,7 +135,7 @@ export default function LegalPage() {
                   }`}
                   aria-current={active ? "page" : undefined}
                 >
-                  {LEGAL_DOCS[key].title[language]}
+                  {docs[key].title[language]}
                 </Link>
               );
             })}
@@ -170,8 +168,8 @@ export default function LegalPage() {
         </article>
 
         <footer className={`mt-14 border-t pt-6 text-xs ${subtle} ${light ? "border-[#0d1117]/10" : "border-white/10"}`}>
-          <p>{t.operator}</p>
-          <p className="mt-1">© {new Date().getFullYear()} CoreCapital</p>
+          {showOperator && <p>{t.operator}</p>}
+          <p className={showOperator ? "mt-1" : undefined}>© {new Date().getFullYear()} {wordmark.join("")}</p>
         </footer>
       </div>
     </div>

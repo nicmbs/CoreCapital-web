@@ -40,7 +40,8 @@ jobs:
           # real index.html.
           # /coresolutions ya tiene su propio index.html (redirect estatico a
           # coresolutions.services) copiado desde public/, no lo pisamos aca.
-          for route in legal legal/terminos legal/privacidad legal/cookies; do
+          for route in legal legal/terminos legal/privacidad legal/cookies \
+            corecontent/legal corecontent/legal/privacidad corecontent/legal/terminos corecontent/legal/eliminar-datos; do
             mkdir -p "dist/$route"
             cp dist/index.html "dist/$route/index.html"
           done
