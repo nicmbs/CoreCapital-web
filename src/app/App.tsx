@@ -21,6 +21,8 @@ export default function App() {
                 verificar el cliente OAuth propio. */}
             <Route path="/legal" element={<Navigate to="/legal/terminos" replace />} />
             <Route path="/legal/:slug" element={<LegalPage />} />
+            <Route path="/corecontent/legal" element={<Navigate to="/corecontent/legal/privacidad" replace />} />
+            <Route path="/corecontent/legal/:slug" element={<LegalPage site="corecontent" />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
