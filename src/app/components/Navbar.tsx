@@ -23,6 +23,7 @@ export function Navbar() {
     { label: t.features, href: "#features" },
     { label: t.analytics, href: "#analytics" },
     { label: t.capabilities, href: "#capabilities" },
+    { label: t.usInvesting, href: "#us-investing" },
     { label: t.tokenization, href: "#tokenization" },
     { label: t.contact, href: "#contact" },
   ];
@@ -45,12 +46,12 @@ export function Navbar() {
         </span>
 
         {/* Desktop Links + Get Started */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-8">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-white/60 hover:text-white transition-colors duration-200 text-sm"
+              className="text-white/60 hover:text-white transition-colors duration-200 text-sm whitespace-nowrap"
             >
               {link.label}
             </a>
@@ -78,7 +79,7 @@ export function Navbar() {
 
           <a
             href="#pricing"
-            className="bg-[#39FF71] text-[#0a0b0f] text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_20px_rgba(57,255,113,0.3)]"
+            className="whitespace-nowrap bg-[#39FF71] text-[#0a0b0f] text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-[#5dff8a] transition-all duration-200 shadow-[0_0_20px_rgba(57,255,113,0.3)]"
           >
             {t.getStarted}
           </a>
@@ -87,7 +88,7 @@ export function Navbar() {
         {/* Mobile menu button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white/70 hover:text-white"
+          className="lg:hidden text-white/70 hover:text-white"
         >
           <div className="flex flex-col gap-1.5">
             <span className={`block w-6 h-0.5 bg-current transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
@@ -104,7 +105,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-[#0a0b0f]/95 backdrop-blur-xl border-t border-white/5 px-6 py-4"
+            className="lg:hidden bg-[#0a0b0f]/95 backdrop-blur-xl border-t border-white/5 px-6 py-4"
           >
             {links.map((link) => (
               <a

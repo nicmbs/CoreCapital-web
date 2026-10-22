@@ -3,6 +3,7 @@ import { Hero } from "../../app/components/Hero";
 import { Features } from "../../app/components/Features";
 import { AnalyticsDashboard } from "../../app/components/AnalyticsDashboard";
 import { AIEngines } from "../../app/components/AIEngines";
+import { UsInvesting } from "../../app/components/UsInvesting";
 import { Tokenization } from "../../app/components/Tokenization";
 import { Pricing } from "../../app/components/Pricing";
 import { Contact } from "../../app/components/Contact";
@@ -27,6 +28,7 @@ export default function CoreCapitalPage() {
         <Features />
         <AnalyticsDashboard />
         <AIEngines />
+        <UsInvesting />
         <Tokenization />
         <Pricing />
         <Contact />
