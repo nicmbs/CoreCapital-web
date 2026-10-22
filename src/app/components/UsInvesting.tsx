@@ -5,7 +5,6 @@ import {
   BarChart3,
   Bot,
   Clock,
-  Info,
   MessageCircle,
   Wallet,
 } from "lucide-react";
@@ -16,12 +15,12 @@ import { CONTACT_PREFILL_EVENT } from "./Contact";
 // Icon per feature (order matches translations.usInvesting.features)
 const featureIcons = [BarChart3, Wallet, Bot, MessageCircle];
 
-// Datos fijos de la vista previa: es una maqueta ilustrativa, no cotizaciones.
+// Datos fijos de la vista previa: es una maqueta, no cotizaciones.
 const PREVIEW_TICKER = "VOO";
 const PREVIEW_AMOUNT = "USD 250.00";
 const PREVIEW_SHARES = "0.4612";
 
-/** "Invertí en EE.UU." — feature en acceso anticipado (hoy es demo, sin broker propio). */
+/** "Invertí en EE.UU." — acciones, ETFs y cripto de EE.UU., en acceso anticipado. */
 export function UsInvesting() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -205,25 +204,13 @@ export function UsInvesting() {
           </motion.div>
         </div>
 
-        {/* Disclaimer */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex items-start gap-3 max-w-3xl mx-auto mt-10 bg-white/[0.03] border border-white/8 rounded-2xl px-5 py-4"
-        >
-          <Info size={18} className="text-white/40 shrink-0 mt-0.5" />
-          <p className="text-white/45 text-sm leading-relaxed">{t.disclaimer}</p>
-        </motion.div>
-
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center mt-10"
+          className="flex justify-center mt-14"
         >
           <a
             href="#contact"

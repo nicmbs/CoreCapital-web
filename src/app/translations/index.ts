@@ -6,6 +6,7 @@ export const translations = {
       features: "Features",
       analytics: "Analytics",
       capabilities: "Capabilities",
+      usInvesting: "US Markets",
       tokenization: "Tokenization",
       contact: "Contact",
       getStarted: "Get Started",
@@ -210,11 +211,11 @@ export const translations = {
     },
     // US investing (coming soon)
     usInvesting: {
-      badge: "Coming soon · Early access",
+      badge: "New · Early access",
       title1: "Invest in the US",
       title2: "from CoreCapital",
       subtitle:
-        "We're preparing direct access to the US market: stocks, ETFs and crypto, from your own US account and alongside the rest of your wealth.",
+        "Direct access to the US market: stocks, ETFs and crypto, from your own US account and alongside the rest of your wealth.",
       features: [
         {
           title: "Stocks, ETFs and crypto",
@@ -239,7 +240,7 @@ export const translations = {
         { value: "USD", label: "Orders by amount" },
       ],
       preview: {
-        label: "Illustrative preview",
+        label: "How it looks",
         account: "US account",
         buy: "Buy",
         amount: "Amount",
@@ -248,8 +249,6 @@ export const translations = {
         whatsapp: "Buy USD 250 of VOO",
         whatsappReply: "Order ready: buy USD 250 of VOO. Confirm?",
       },
-      disclaimer:
-        "In development. Today it runs as a demo with simulated money: CoreCapital doesn't offer brokerage services yet. Trading with real money will be available through a regulated US broker, once the corresponding agreements and approvals are in place.",
       cta: "I want early access",
       contactMessage: "Hi! I'd like early access to investing in the US from CoreCapital.",
     },
@@ -435,6 +434,7 @@ export const translations = {
       features: "Funciones",
       analytics: "Analíticas",
       capabilities: "Capacidades",
+      usInvesting: "EE.UU.",
       tokenization: "Tokenización",
       contact: "Contacto",
       getStarted: "Comenzar",
@@ -639,11 +639,11 @@ export const translations = {
     },
     // Invertí en EE.UU. (próximamente)
     usInvesting: {
-      badge: "Próximamente · Acceso anticipado",
+      badge: "Nuevo · Acceso anticipado",
       title1: "Invertí en EE.UU.",
       title2: "desde CoreCapital",
       subtitle:
-        "Estamos preparando el acceso directo al mercado de Estados Unidos: acciones, ETFs y cripto, desde tu propia cuenta en EE.UU. y junto al resto de tu patrimonio.",
+        "Accedé directo al mercado de Estados Unidos: acciones, ETFs y cripto, desde tu propia cuenta en EE.UU. y junto al resto de tu patrimonio.",
       features: [
         {
           title: "Acciones, ETFs y cripto",
@@ -668,7 +668,7 @@ export const translations = {
         { value: "USD", label: "Órdenes por monto" },
       ],
       preview: {
-        label: "Vista previa ilustrativa",
+        label: "Así se ve",
         account: "Cuenta en EE.UU.",
         buy: "Comprar",
         amount: "Monto",
@@ -677,8 +677,6 @@ export const translations = {
         whatsapp: "Comprá USD 250 de VOO",
         whatsappReply: "Orden lista: comprar USD 250 de VOO. ¿Confirmás?",
       },
-      disclaimer:
-        "En desarrollo. Hoy funciona como demo con dinero simulado: CoreCapital todavía no ofrece servicios de intermediación bursátil. La operación con dinero real va a estar disponible a través de un broker regulado en EE.UU., una vez concretados los acuerdos y las habilitaciones correspondientes.",
       cta: "Quiero acceso anticipado",
       contactMessage: "¡Hola! Quiero acceso anticipado para invertir en EE.UU. desde CoreCapital.",
     },
