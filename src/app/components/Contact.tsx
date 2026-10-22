@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { Mail, Send, Check, Loader2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
@@ -15,6 +15,10 @@ const SUPABASE_ANON_KEY =
 const LEADS_ENDPOINT = `${SUPABASE_URL}/rest/v1/leads`;
 
 type Status = "idle" | "sending" | "sent" | "error";
+
+// Otras secciones (p. ej. "Invertí en EE.UU.") disparan este evento para
+// precargar el mensaje antes de saltar al formulario.
+export const CONTACT_PREFILL_EVENT = "cc:contact-prefill";
 
 const copy = {
   en: {
@@ -72,6 +76,18 @@ export function Contact() {
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    const onPrefill = (e: Event) => {
+      const text = (e as CustomEvent<string>).detail;
+      if (!text) return;
+      // No pisamos algo que el usuario ya escribió.
+      setMessage((current) => (current.trim() ? current : text));
+      setStatus((current) => (current === "sent" ? "idle" : current));
+    };
+    window.addEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+    return () => window.removeEventListener(CONTACT_PREFILL_EVENT, onPrefill);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

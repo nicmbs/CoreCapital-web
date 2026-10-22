@@ -208,6 +208,51 @@ export const translations = {
         },
       },
     },
+    // US investing (coming soon)
+    usInvesting: {
+      badge: "Coming soon · Early access",
+      title1: "Invest in the US",
+      title2: "from CoreCapital",
+      subtitle:
+        "We're preparing direct access to the US market: stocks, ETFs and crypto, from your own US account and alongside the rest of your wealth.",
+      features: [
+        {
+          title: "Stocks, ETFs and crypto",
+          desc: "Buy and sell US stocks and ETFs, plus BTC, ETH, SOL and more. Invest by amount in USD, with fractional shares.",
+        },
+        {
+          title: "Instant funding",
+          desc: "Move money from your CoreCapital wallet to your US account in seconds, with no wires or extra paperwork.",
+        },
+        {
+          title: "Analyzed by your AI agents",
+          desc: "Every position shows up in your portfolio, and CoreCapital's AI agents factor it into their reading and recommendations.",
+        },
+        {
+          title: "Trade from WhatsApp",
+          desc: "Ask the assistant to buy or sell. It always shows you the order and waits for your confirmation before sending it.",
+        },
+      ],
+      stats: [
+        { value: "Fractional", label: "Invest from small amounts" },
+        { value: "24/7", label: "Crypto trading" },
+        { value: "USD", label: "Orders by amount" },
+      ],
+      preview: {
+        label: "Illustrative preview",
+        account: "US account",
+        buy: "Buy",
+        amount: "Amount",
+        estimated: "Estimated shares",
+        confirm: "Confirm order",
+        whatsapp: "Buy USD 250 of VOO",
+        whatsappReply: "Order ready: buy USD 250 of VOO. Confirm?",
+      },
+      disclaimer:
+        "In development. Today it runs as a demo with simulated money: CoreCapital doesn't offer brokerage services yet. Trading with real money will be available through a regulated US broker, once the corresponding agreements and approvals are in place.",
+      cta: "I want early access",
+      contactMessage: "Hi! I'd like early access to investing in the US from CoreCapital.",
+    },
     // Tokenization
     tokenization: {
       badge: "Real-World Asset Tokenization",
@@ -591,6 +636,51 @@ export const translations = {
           ],
         },
       },
+    },
+    // Invertí en EE.UU. (próximamente)
+    usInvesting: {
+      badge: "Próximamente · Acceso anticipado",
+      title1: "Invertí en EE.UU.",
+      title2: "desde CoreCapital",
+      subtitle:
+        "Estamos preparando el acceso directo al mercado de Estados Unidos: acciones, ETFs y cripto, desde tu propia cuenta en EE.UU. y junto al resto de tu patrimonio.",
+      features: [
+        {
+          title: "Acciones, ETFs y cripto",
+          desc: "Comprá y vendé acciones y ETFs de EE.UU., además de BTC, ETH, SOL y más. Invertí por monto en USD, con fracciones.",
+        },
+        {
+          title: "Fondeo al instante",
+          desc: "Pasá plata desde tu wallet de CoreCapital a tu cuenta en EE.UU. en segundos, sin transferencias ni trámites extra.",
+        },
+        {
+          title: "Lo analizan tus agentes de IA",
+          desc: "Cada posición aparece en tu portafolio y los agentes de IA de CoreCapital la tienen en cuenta en su lectura y sus recomendaciones.",
+        },
+        {
+          title: "Operá desde WhatsApp",
+          desc: "Pedile al asistente que compre o venda. Siempre te muestra la orden y espera tu confirmación antes de enviarla.",
+        },
+      ],
+      stats: [
+        { value: "Fracciones", label: "Invertí desde montos chicos" },
+        { value: "24/7", label: "Operación de cripto" },
+        { value: "USD", label: "Órdenes por monto" },
+      ],
+      preview: {
+        label: "Vista previa ilustrativa",
+        account: "Cuenta en EE.UU.",
+        buy: "Comprar",
+        amount: "Monto",
+        estimated: "Acciones estimadas",
+        confirm: "Confirmar orden",
+        whatsapp: "Comprá USD 250 de VOO",
+        whatsappReply: "Orden lista: comprar USD 250 de VOO. ¿Confirmás?",
+      },
+      disclaimer:
+        "En desarrollo. Hoy funciona como demo con dinero simulado: CoreCapital todavía no ofrece servicios de intermediación bursátil. La operación con dinero real va a estar disponible a través de un broker regulado en EE.UU., una vez concretados los acuerdos y las habilitaciones correspondientes.",
+      cta: "Quiero acceso anticipado",
+      contactMessage: "¡Hola! Quiero acceso anticipado para invertir en EE.UU. desde CoreCapital.",
     },
     // Tokenization
     tokenization: {
